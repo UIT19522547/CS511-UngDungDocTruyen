@@ -30,6 +30,8 @@ namespace UngDungDocTruyen
             but_back_to_my_story.Load("..//..//back2.png");
             but_back_to_my_story.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            panel_write_new.Visible = false;
+
             //Chỉnh sửa về màu chữ
             {
                 type_book.ForeColor = Color.GreenYellow;
@@ -50,7 +52,13 @@ namespace UngDungDocTruyen
 
             }
 
-
+            //Thêm truyện vào tablelayoutpanel
+            int i = 0;
+            for (i = 0; i < 6; i++)
+            {
+                tableLayoutPanel_story.Controls.Add(new UserControl_Story_on_Home());
+            }
+            
 
             string[] lines = {
             "First line", "Second line", "Third line"
@@ -59,17 +67,17 @@ namespace UngDungDocTruyen
             Console.WriteLine("OK");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
