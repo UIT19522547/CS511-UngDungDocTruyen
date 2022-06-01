@@ -73,5 +73,10 @@ namespace UngDungDocTruyen
         {
 
         }
+
+        private void pnlWriteBook2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
