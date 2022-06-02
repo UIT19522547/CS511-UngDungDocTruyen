@@ -46,7 +46,9 @@ namespace UngDungDocTruyen
                 type9.ForeColor = Color.YellowGreen;
                 write_new.ForeColor= Color.YellowGreen;
                 my_story.ForeColor = Color.YellowGreen;
-                
+                tableLayoutPanel1.BackColor= Color.FromArgb(200, Color.Black);
+
+
 
 
             }
