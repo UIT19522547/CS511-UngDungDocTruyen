@@ -24,9 +24,10 @@ namespace UngDungDocTruyen
             warning_username.Text = "";
             warning_password.Text = "";
             warning_password_retype.Text = "";
+            label2.Text = "Đăng nhập";
 
             //Lấy usename và pass đã lưu
-            uname_pass = File.ReadLines("E:\\NoteUIT\\C_sharp\\DoAn\\username_password_saved.txt").ToArray();
+            uname_pass = File.ReadLines("C://Users//thaov//OneDrive//Desktop//DoAn//username_password_saved.txt").ToArray();
             //Chia username và pass ra 2 array
             int i = 0;
             for (i = 0; i < uname_pass.Length; i++)
@@ -120,11 +121,13 @@ namespace UngDungDocTruyen
         private void toSignUp_Click(object sender, EventArgs e)
         {
             panSignUp.Visible = true;
+            label2.Text = "Đăng ký";
         }
 
         private void toLogin_Click(object sender, EventArgs e)
         {
             panSignUp.Visible = false;
+            label2.Text = "Đăng nhập";
         }
 
         private void login_ok_Click(object sender, EventArgs e)

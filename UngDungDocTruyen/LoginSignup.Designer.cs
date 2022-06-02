@@ -163,9 +163,9 @@
             this.panSignUp.Controls.Add(this.signup_ok);
             this.panSignUp.Controls.Add(this.password_retype);
             this.panSignUp.Controls.Add(this.label7);
-            this.panSignUp.Location = new System.Drawing.Point(23, 435);
+            this.panSignUp.Location = new System.Drawing.Point(23, 426);
             this.panSignUp.Name = "panSignUp";
-            this.panSignUp.Size = new System.Drawing.Size(364, 258);
+            this.panSignUp.Size = new System.Drawing.Size(364, 267);
             this.panSignUp.TabIndex = 10;
             this.panSignUp.Visible = false;
             // 
