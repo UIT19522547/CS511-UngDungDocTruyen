@@ -23,14 +23,13 @@ namespace UngDungDocTruyen
             //user_image.Visible = false;
 
             //Load ảnh vào các PictureBox
-            home.Load("..//..//homeIcon4.png");
+            home.Load("C://Users//thaov//OneDrive//Desktop//DoAn//Image//homeIcon4.png");
             home.SizeMode = PictureBoxSizeMode.StretchImage;
-            user_image.Load("..//..//jn112_grookey_eevee2.jpg");
+            user_image.Load("C://Users//thaov//OneDrive//Desktop//DoAn//Image//pika.jpg");
             user_image.SizeMode = PictureBoxSizeMode.StretchImage;
-            but_back_to_my_story.Load("..//..//back2.png");
-            but_back_to_my_story.SizeMode = PictureBoxSizeMode.StretchImage;
+            
 
-            panel_write_new.Visible = false;
+            //panel_write_new.Visible = false;
 
             //Chỉnh sửa về màu chữ
             {
@@ -60,6 +59,7 @@ namespace UngDungDocTruyen
             }
             
 
+            //test code viết array vào file
             string[] lines = {
             "First line", "Second line", "Third line"
             };
@@ -80,6 +80,29 @@ namespace UngDungDocTruyen
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void load_cover_image_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileOpen = new OpenFileDialog();
+            fileOpen.Title = "Open Image file";
+            fileOpen.Filter = "JPG Files (*.jpg)| *.jpg|PNG Files (*.png)| *.png";
+            if (fileOpen.ShowDialog() == DialogResult.OK)
+            {
+                //cover_image.Image = Image.FromFile(fileOpen.FileName);
+            }
+            fileOpen.Dispose();
+        }
+
+        private void write_new_Click(object sender, EventArgs e)
+        {
+            //panel_write_new.Visible = true;
+        }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            var x = new LoginSignup();
+            x.Show();
         }
     }
 }
