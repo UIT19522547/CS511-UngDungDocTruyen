@@ -37,14 +37,13 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.but_back_to_my_story = new System.Windows.Forms.PictureBox();
+            this.but_back_home = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.create_ok = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,12 +55,13 @@
             this.write_new_menu = new System.Windows.Forms.MenuStrip();
             this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             this.panel_write_new.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover_image)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.but_back_to_my_story)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.but_back_home)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel6.SuspendLayout();
             this.write_new_menu.SuspendLayout();
@@ -94,7 +94,9 @@
             // 
             // cover_image
             // 
-            this.cover_image.BackColor = System.Drawing.Color.Black;
+            this.cover_image.BackColor = System.Drawing.Color.DarkGray;
+            this.cover_image.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cover_image.BackgroundImage")));
+            this.cover_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cover_image.Location = new System.Drawing.Point(74, 29);
             this.cover_image.Name = "cover_image";
             this.cover_image.Size = new System.Drawing.Size(347, 412);
@@ -107,7 +109,7 @@
             this.load_cover_image.Cursor = System.Windows.Forms.Cursors.Hand;
             this.load_cover_image.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.load_cover_image.ForeColor = System.Drawing.Color.Black;
-            this.load_cover_image.Location = new System.Drawing.Point(148, 467);
+            this.load_cover_image.Location = new System.Drawing.Point(165, 466);
             this.load_cover_image.Name = "load_cover_image";
             this.load_cover_image.Size = new System.Drawing.Size(170, 50);
             this.load_cover_image.TabIndex = 4;
@@ -122,9 +124,9 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 138F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel3.Controls.Add(this.panel8, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.but_back_to_my_story, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.but_back_home, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel9, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -140,13 +142,13 @@
             this.panel8.Controls.Add(this.label8);
             this.panel8.Location = new System.Drawing.Point(59, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(969, 88);
+            this.panel8.Size = new System.Drawing.Size(1002, 88);
             this.panel8.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Black;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(15, 13);
@@ -158,7 +160,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Black;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(3, 46);
@@ -167,24 +169,25 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Tên truyện...";
             // 
-            // but_back_to_my_story
+            // but_back_home
             // 
-            this.but_back_to_my_story.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.but_back_to_my_story.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("but_back_to_my_story.BackgroundImage")));
-            this.but_back_to_my_story.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.but_back_to_my_story.Image = ((System.Drawing.Image)(resources.GetObject("but_back_to_my_story.Image")));
-            this.but_back_to_my_story.Location = new System.Drawing.Point(6, 28);
-            this.but_back_to_my_story.Name = "but_back_to_my_story";
-            this.but_back_to_my_story.Size = new System.Drawing.Size(44, 44);
-            this.but_back_to_my_story.TabIndex = 0;
-            this.but_back_to_my_story.TabStop = false;
+            this.but_back_home.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.but_back_home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("but_back_home.BackgroundImage")));
+            this.but_back_home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.but_back_home.Image = ((System.Drawing.Image)(resources.GetObject("but_back_home.Image")));
+            this.but_back_home.Location = new System.Drawing.Point(6, 28);
+            this.but_back_home.Name = "but_back_home";
+            this.but_back_home.Size = new System.Drawing.Size(44, 44);
+            this.but_back_home.TabIndex = 0;
+            this.but_back_home.TabStop = false;
+            this.but_back_home.Click += new System.EventHandler(this.but_back_home_Click);
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.create_ok);
-            this.panel9.Location = new System.Drawing.Point(1037, 6);
+            this.panel9.Location = new System.Drawing.Point(1070, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(108, 88);
+            this.panel9.Size = new System.Drawing.Size(99, 88);
             this.panel9.TabIndex = 5;
             // 
             // create_ok
@@ -193,20 +196,21 @@
             this.create_ok.Cursor = System.Windows.Forms.Cursors.Hand;
             this.create_ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.create_ok.ForeColor = System.Drawing.Color.White;
-            this.create_ok.Location = new System.Drawing.Point(-10, -9);
+            this.create_ok.Location = new System.Drawing.Point(-5, -6);
             this.create_ok.Name = "create_ok";
-            this.create_ok.Size = new System.Drawing.Size(129, 101);
+            this.create_ok.Size = new System.Drawing.Size(110, 101);
             this.create_ok.TabIndex = 0;
             this.create_ok.Text = "Tạo truyện";
             this.create_ok.UseVisualStyleBackColor = false;
+            this.create_ok.Click += new System.EventHandler(this.create_ok_Click);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.comboBox);
             this.panel6.Controls.Add(this.checkBox1);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.comboBox1);
-            this.panel6.Controls.Add(this.richTextBox3);
             this.panel6.Controls.Add(this.richTextBox2);
             this.panel6.Controls.Add(this.richTextBox1);
             this.panel6.Controls.Add(this.label6);
@@ -224,6 +228,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
             this.checkBox1.Location = new System.Drawing.Point(374, 452);
@@ -231,12 +236,12 @@
             this.checkBox1.Size = new System.Drawing.Size(109, 33);
             this.checkBox1.TabIndex = 12;
             this.checkBox1.Text = "Không";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.Black;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(18, 491);
@@ -267,18 +272,6 @@
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "Độ tuổi độc giả chính";
             // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(140, 303);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(700, 44);
-            this.richTextBox3.TabIndex = 9;
-            this.richTextBox3.Text = "";
-            // 
             // richTextBox2
             // 
             this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -306,7 +299,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Black;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(18, 456);
@@ -318,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Black;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(24, 389);
@@ -330,10 +323,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(18, 303);
+            this.label4.Location = new System.Drawing.Point(18, 316);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 29);
             this.label4.TabIndex = 4;
@@ -342,7 +335,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(24, 155);
@@ -354,7 +347,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(24, 86);
@@ -401,6 +394,27 @@
             this.cácChươngToolStripMenuItem.Size = new System.Drawing.Size(156, 36);
             this.cácChươngToolStripMenuItem.Text = "Các chương";
             // 
+            // comboBox
+            // 
+            this.comboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Mọi lứa tuổi",
+            "Tiền thiếu niên (8-13)",
+            "Thiếu niên (13-18)",
+            "Tuổi mới lớn (18-25)",
+            "Tuổi trưởng thành (25+)"});
+            this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "6-13",
+            "13-18",
+            "18-25",
+            "25+"});
+            this.comboBox.Location = new System.Drawing.Point(141, 316);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(199, 37);
+            this.comboBox.TabIndex = 14;
+            this.comboBox.Text = "Thể loại chính";
+            // 
             // Writing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -415,7 +429,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.but_back_to_my_story)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.but_back_home)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -435,14 +449,13 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox but_back_to_my_story;
+        private System.Windows.Forms.PictureBox but_back_home;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button create_ok;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label6;
@@ -454,5 +467,6 @@
         private System.Windows.Forms.MenuStrip write_new_menu;
         private System.Windows.Forms.ToolStripMenuItem tTTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácChươngToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox;
     }
 }
