@@ -104,8 +104,10 @@
             // 
             // pic_back_home
             // 
+            this.pic_back_home.BackColor = System.Drawing.Color.Transparent;
             this.pic_back_home.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_back_home.BackgroundImage")));
             this.pic_back_home.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_back_home.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic_back_home.Location = new System.Drawing.Point(23, 25);
             this.pic_back_home.Name = "pic_back_home";
             this.pic_back_home.Size = new System.Drawing.Size(60, 60);
@@ -116,6 +118,8 @@
             // pic_current_uname
             // 
             this.pic_current_uname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_current_uname.BackColor = System.Drawing.Color.Transparent;
+            this.pic_current_uname.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic_current_uname.Location = new System.Drawing.Point(1054, 25);
             this.pic_current_uname.Name = "pic_current_uname";
             this.pic_current_uname.Size = new System.Drawing.Size(60, 60);
@@ -368,8 +372,10 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(12, 59);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 60);

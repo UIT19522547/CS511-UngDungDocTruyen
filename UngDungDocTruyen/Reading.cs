@@ -41,6 +41,11 @@ namespace UngDungDocTruyen
             num_views.Text = story_info2[0];
             num_likes.Text = story_info2[1];
             num_chapters.Text = story_info2[2];
+            label1.Text = story_info[0];
+            sum.Text = story_info[3];
+            genre.Text = story_info[4];
+            rating.Text = story_info[5];
+            yeu_to_truong_thanh.Text = story_info[6];
 
             string ten_dang_nhap_tac_gia = story_info[2];
             string profile_image_link = user_profile_folder_link + "//" + ten_dang_nhap_tac_gia + ".jpg";
@@ -54,12 +59,14 @@ namespace UngDungDocTruyen
             if (current_user_name != "")
             {
                 string current_profile_image_link = user_profile_folder_link + "//" + current_user_name + ".jpg";
-                current_user_image.Load(current_profile_image_link);
+                Image im = GetCopyImage(current_profile_image_link);
+                current_user_image.Image = im;
                 current_user_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             else
             {
-                current_user_image.Load("D://DoAn//user_profile_images//default.jpg");
+                Image im = GetCopyImage("D://DoAn//user_profile_images//default.jpg");
+                current_user_image.Image = im;
                 current_user_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
@@ -91,6 +98,7 @@ namespace UngDungDocTruyen
                     }
                     count += 1;
                 }
+
             }
 
             dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 14);
@@ -109,7 +117,14 @@ namespace UngDungDocTruyen
             dataGridView1.DataSource = x;
             DataGridViewColumn column = dataGridView1.Columns[0];
             column.Width = 580;
+            dataGridView1.CellClick += click_chapter;
 
+        }
+
+        private void click_chapter(Object sender, DataGridViewCellEventArgs e)
+        {
+            //click vào sẽ ra chapter mới
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAA");
         }
 
         private void current_user_image_Click(object sender, EventArgs e)
@@ -193,6 +208,14 @@ namespace UngDungDocTruyen
             }
             x.Show();
             this.Close();
+        }
+        private Image GetCopyImage(string path)
+        {
+            using (Image im = Image.FromFile(path))
+            {
+                Bitmap bm = new Bitmap(im);
+                return bm;
+            }
         }
     }
 }

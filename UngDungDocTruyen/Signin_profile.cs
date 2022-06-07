@@ -40,14 +40,16 @@ namespace UngDungDocTruyen
             else if (my_profile)
             {
                 string path_ = "D://DoAn//Image//setting.png";
-                pic_current_uname.Load(path_);
+                Image im = GetCopyImage(path_);
+                pic_current_uname.Image = im;
                 pic_current_uname.SizeMode = PictureBoxSizeMode.StretchImage;
                 isMyProfile = true;
             }
             else
             {
                 string path_ = "D://DoAn//user_profile_images//" + current_user_uname + ".jpg";
-                pic_current_uname.Load(path_);
+                Image im = GetCopyImage(path_);
+                pic_current_uname.Image = im;
                 pic_current_uname.SizeMode = PictureBoxSizeMode.StretchImage;
 
             }
@@ -99,9 +101,11 @@ namespace UngDungDocTruyen
                 if (username_of_profile != "")
                 {
                     string link_profile_img = link_to_user_info+"//" + username_of_profile + ".jpg";
-                    pic_profile_img.Load(link_profile_img);
+                    Image im = GetCopyImage(link_profile_img);
+                    pic_profile_img.Image = im;
                     pic_profile_img.SizeMode = PictureBoxSizeMode.StretchImage;
-                    profile_image2.Load(link_profile_img);
+                    im = GetCopyImage(link_profile_img);
+                    profile_image2.Image = im;
                     profile_image2.SizeMode = PictureBoxSizeMode.StretchImage;
 
                     string link_info = link_to_user_info + "//" + username_of_profile + ".txt";
@@ -225,7 +229,6 @@ namespace UngDungDocTruyen
 
         private void following_click(object sender, EventArgs e)
         {
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             profile_following y = (profile_following)sender;
             //click vào 1 user khác thì reset trang và bỏ thông tin của user đã click vào
             bool ismyprofile = (current_user_uname == y.Name.ToString());
@@ -248,7 +251,7 @@ namespace UngDungDocTruyen
             if (current_profile_uname != current_user_uname)
             {
                 Reading y = new Reading(ten_truyen, ten_dang_nhap_tac_gia, current_user_uname);
-                y.RefToHome = this;
+                //y.RefToHome = this;
                 if (this.WindowState == FormWindowState.Maximized)
                 {
                     y.WindowState = FormWindowState.Maximized;
@@ -542,16 +545,13 @@ namespace UngDungDocTruyen
                 //save ảnh đại diện mới + cập nhật ảnh đại diện
                 string path1 = "D://DoAn//user_profile_images//" + current_user_uname + ".jpg";
                 string path2 = "D://DoAn//user_profile_images//" + new_uname + ".jpg";
-                
-                pic_profile_img.Image = null;
-                pic_profile_img.BackgroundImage = null;
-                pic_profile_img.Load(path2);
+
+                File.Delete(path1);
+                profile_image2.Image.Save(path2);
+                Image im = GetCopyImage(path2);
+                pic_profile_img.Image = im;
                 pic_profile_img.SizeMode = PictureBoxSizeMode.StretchImage;
                 
-                
-
-                //File.Delete(path1);
-                profile_image2.Image.Save(path2);
 
                 //Cập nhật lại thông tin ở trang xem
                 label7.Text = new_name;
@@ -574,6 +574,16 @@ namespace UngDungDocTruyen
                 profile_image2.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             fileOpen.Dispose();
+        }
+
+
+        private Image GetCopyImage(string path)
+        {
+            using (Image im = Image.FromFile(path))
+            {
+                Bitmap bm = new Bitmap(im);
+                return bm;
+            }
         }
     }
 }
