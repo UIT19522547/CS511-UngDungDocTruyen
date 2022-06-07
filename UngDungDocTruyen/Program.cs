@@ -17,7 +17,7 @@ namespace UngDungDocTruyen
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Reading("Harry Potter và Hòn Đá Phù Thủy","jkrowling","sandrabrown"));
-            Application.Run(new Form1());
+            Application.Run(new Form1(""));
         }
     }
 }

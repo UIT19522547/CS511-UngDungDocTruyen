@@ -41,6 +41,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.create_ok = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -55,7 +56,7 @@
             this.write_new_menu = new System.Windows.Forms.MenuStrip();
             this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_write_new.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover_image)).BeginInit();
@@ -65,6 +66,7 @@
             this.panel9.SuspendLayout();
             this.panel6.SuspendLayout();
             this.write_new_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_write_new
@@ -124,7 +126,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.tableLayoutPanel3.Controls.Add(this.panel8, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.but_back_home, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel9, 2, 0);
@@ -142,7 +144,7 @@
             this.panel8.Controls.Add(this.label8);
             this.panel8.Location = new System.Drawing.Point(59, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1002, 88);
+            this.panel8.Size = new System.Drawing.Size(996, 88);
             this.panel8.TabIndex = 4;
             // 
             // label9
@@ -185,7 +187,7 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.create_ok);
-            this.panel9.Location = new System.Drawing.Point(1070, 6);
+            this.panel9.Location = new System.Drawing.Point(1064, 6);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(99, 88);
             this.panel9.TabIndex = 5;
@@ -207,7 +209,8 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
-            this.panel6.Controls.Add(this.comboBox);
+            this.panel6.Controls.Add(this.dataGridView1);
+            this.panel6.Controls.Add(this.richTextBox3);
             this.panel6.Controls.Add(this.checkBox1);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.comboBox1);
@@ -224,6 +227,18 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(900, 571);
             this.panel6.TabIndex = 1;
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Location = new System.Drawing.Point(141, 316);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(700, 44);
+            this.richTextBox3.TabIndex = 14;
+            this.richTextBox3.Text = "";
             // 
             // checkBox1
             // 
@@ -386,6 +401,7 @@
             this.tTTToolStripMenuItem.Name = "tTTToolStripMenuItem";
             this.tTTToolStripMenuItem.Size = new System.Drawing.Size(210, 36);
             this.tTTToolStripMenuItem.Text = "Thông tin truyện";
+            this.tTTToolStripMenuItem.Click += new System.EventHandler(this.tTTToolStripMenuItem_Click);
             // 
             // cácChươngToolStripMenuItem
             // 
@@ -393,27 +409,18 @@
             this.cácChươngToolStripMenuItem.Name = "cácChươngToolStripMenuItem";
             this.cácChươngToolStripMenuItem.Size = new System.Drawing.Size(156, 36);
             this.cácChươngToolStripMenuItem.Text = "Các chương";
+            this.cácChươngToolStripMenuItem.Click += new System.EventHandler(this.cácChươngToolStripMenuItem_Click);
             // 
-            // comboBox
+            // dataGridView1
             // 
-            this.comboBox.AutoCompleteCustomSource.AddRange(new string[] {
-            "Mọi lứa tuổi",
-            "Tiền thiếu niên (8-13)",
-            "Thiếu niên (13-18)",
-            "Tuổi mới lớn (18-25)",
-            "Tuổi trưởng thành (25+)"});
-            this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox.FormattingEnabled = true;
-            this.comboBox.Items.AddRange(new object[] {
-            "6-13",
-            "13-18",
-            "18-25",
-            "25+"});
-            this.comboBox.Location = new System.Drawing.Point(141, 316);
-            this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(199, 37);
-            this.comboBox.TabIndex = 14;
-            this.comboBox.Text = "Thể loại chính";
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 40);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(900, 531);
+            this.dataGridView1.TabIndex = 15;
             // 
             // Writing
             // 
@@ -435,6 +442,7 @@
             this.panel6.PerformLayout();
             this.write_new_menu.ResumeLayout(false);
             this.write_new_menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -467,6 +475,7 @@
         private System.Windows.Forms.MenuStrip write_new_menu;
         private System.Windows.Forms.ToolStripMenuItem tTTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácChươngToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

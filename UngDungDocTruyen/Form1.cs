@@ -18,9 +18,9 @@ namespace UngDungDocTruyen
     {
         string link_story_folder = "D://DoAn//Story";
         bool already_login = false;
-        string current_user_name = "";
+        string current_user_user_name = "";
 
-        public Form1()
+        public Form1(string current_user_uname)
         {
             InitializeComponent();
 
@@ -106,14 +106,86 @@ namespace UngDungDocTruyen
 
                 
             }
-            
 
-            //test code viết array vào file
-            string[] lines = {
-            "First line", "Second line", "Third line"
-            };
-            File.AppendAllLines(Path.Combine("E:\\GAME", "WriteFile.txt"), lines);
-            Console.WriteLine("OK");
+            //Thêm event khi bấm vào thểm loại
+            foreach (ToolStripMenuItem toolItem in type_book.Items)
+            {
+                foreach (ToolStripMenuItem children in toolItem.DropDownItems)
+                {
+                    children.Click += filter_type;
+                }
+            }
+
+            //Nếu đã đăng nhập 
+            if (current_user_uname != "")
+            {
+                already_login = true;
+                current_user_user_name = current_user_uname;
+                string profile_img_path = "D://DoAn//user_profile_images//" + current_user_user_name + ".jpg";
+                profile_image.Load(profile_img_path);
+                profile_image.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private void filter_type(object sender, EventArgs e)
+        {
+            tableLayoutPanel_story.RowStyles.Clear();
+            tableLayoutPanel_story.Controls.Clear();
+
+            ToolStripMenuItem toolItem = (ToolStripMenuItem)sender;
+            string type_have_to_filter = toolItem.Text.ToString();
+            Console.WriteLine("AAA" + type_have_to_filter);
+
+            string[] story = Directory.GetDirectories(link_story_folder);
+            int i = 0;
+            string path;
+            for (i = 0; i < story.Length; i++)
+            {
+                path = story[i]+"//0.txt";
+                string[] x = File.ReadAllLines(path);
+                string type = x[4];
+                string ten_truyen = story[i].Remove(0, link_story_folder.Length + 1);
+                //Nếu tên truyện chứa chuỗi tìm kiếm nhập vào thì add truyện vào tablelayoutpanel 
+                if (type.ToLower().Contains(type_have_to_filter.ToLower()))
+                {
+
+
+                    //Link đến folder chứa tập truyện, thông tin của truyện, ảnh bìa...
+                    string link_folder_truyen = story[i];
+                    string link_infor_truyen = link_folder_truyen + "//" + "0.txt";
+                    Console.WriteLine(link_infor_truyen);
+                    string[] infor_truyen = File.ReadLines(link_infor_truyen).ToArray();
+                    //dòng 2 là tên đăng nhập của tác giả (username)
+                    string ten_dang_nhap_tac_gia = infor_truyen[2];
+                    //dòng thứ 3 là tóm tắt truyện
+                    string sum = infor_truyen[3];
+
+                    string link_view_like_chapter_file = link_folder_truyen + "//" + "view_like_chapter_count.txt";
+                    string[] count = File.ReadLines(link_view_like_chapter_file).ToArray();
+                    string view_count = count[0];
+                    string like_count = count[1];
+                    string chapter_count = count[2];
+
+
+
+                    //link ảnh bìa
+                    string link_anh_bia = story[i] + "//" + ten_truyen + ".png";
+
+                    var y = new UserControl_Story_on_Home(ten_truyen, ten_dang_nhap_tac_gia, view_count, like_count, chapter_count, sum, link_anh_bia);
+
+                    //đặt tên cho user control chứa truyện là tên truyện
+                    y.Name = ten_truyen;
+
+                    //add event function click vào truyện
+                    y.Click += story_click;
+
+                    //Đổi cusor của control
+                    y.Cursor = System.Windows.Forms.Cursors.Hand;
+
+                    //add truyện
+                    tableLayoutPanel_story.Controls.Add(y);
+                }
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -140,7 +212,10 @@ namespace UngDungDocTruyen
 
         private void write_new_Click(object sender, EventArgs e)
         {
-            Writing x = new Writing();
+            string path = "D://DoAn//user_profile_images//" + current_user_user_name + ".txt";
+            
+            string current_user_name = File.ReadAllLines(path)[0];
+            Writing x = new Writing("",current_user_name,current_user_user_name);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -164,11 +239,12 @@ namespace UngDungDocTruyen
             if (info[0] == "true")
             {
                 already_login = true;
-                current_user_name = info[1];
+                current_user_user_name = info[1];
                 login_button.Visible = false;
                 //Nếu đã login thì load ảnh từ folder user profile image lên (ảnh đại diện)
-                string link_anh_dai_dien = "D://DoAn//user_profile_images//" + current_user_name + ".jpg";
+                string link_anh_dai_dien = "D://DoAn//user_profile_images//" + current_user_user_name + ".jpg";
                 profile_image.Load(link_anh_dai_dien);
+                profile_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
@@ -178,7 +254,7 @@ namespace UngDungDocTruyen
         {
             if (already_login)
             {
-                var x = new profile_page(current_user_name,true);
+                var x = new profile_page(current_user_user_name,current_user_user_name,true);
                 if (this.WindowState == FormWindowState.Maximized)
                 {
                     x.WindowState = FormWindowState.Maximized;
@@ -190,7 +266,7 @@ namespace UngDungDocTruyen
         private void user_image_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var x = new profile_page(current_user_name,true);
+            var x = new profile_page(current_user_user_name, current_user_user_name, true);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -206,13 +282,15 @@ namespace UngDungDocTruyen
         private void trangCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //chuyển đến form trang cá nhân
-            this.Hide();
-            var x = new profile_page(current_user_name,true);
+            profile_image.Image = null;
+            profile_image.BackgroundImage = null;
+            var x = new profile_page(current_user_user_name, current_user_user_name, true);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
             }
             x.Show();
+            this.Hide();
         }
         private void story_click(object sender, EventArgs e)
         {
@@ -224,7 +302,7 @@ namespace UngDungDocTruyen
             string link_to_story_info_file = "D://DoAn//Story//" + ten_truyen + "//0.txt";
             string[] story_info = File.ReadAllLines(link_to_story_info_file);
             string ten_dang_nhap_tac_gia = story_info[2];
-            Reading y = new Reading(ten_truyen,ten_dang_nhap_tac_gia,current_user_name);
+            Reading y = new Reading(ten_truyen,ten_dang_nhap_tac_gia,current_user_user_name);
             y.RefToHome = this;
             if (this.WindowState == FormWindowState.Maximized)
             {
@@ -349,6 +427,13 @@ namespace UngDungDocTruyen
                     }
                 }
             }
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            login_button.Visible = true;
+            already_login = false;
+            current_user_user_name = "";
         }
     }
 }
