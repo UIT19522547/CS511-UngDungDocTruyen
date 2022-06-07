@@ -42,12 +42,18 @@ namespace UngDungDocTruyen
                 cácChươngToolStripMenuItem.Visible = true;
                 string story_folder_path = "D://DoAn//Story//" + story_name;
                 string story_info_path = story_folder_path + "//0.txt";
-                string[] info = File.ReadAllLines(story_info_path);
+                string[] info = File.ReadAllLines(story_info_path, Encoding.UTF8);
 
-                richTextBox1.Text = info[0];
+
+                //richTextBox2.LoadFile(story_info_path, RichTextBoxStreamType.PlainText);
+                textBox1.Text = info[0];
+                textBox1.Text = textBox1.Text;
                 label8.Text = info[0];
-                richTextBox2.Text = info[3];
-                richTextBox3.Text = info[4];
+                textBox2.AutoSize = false;
+                textBox2.ScrollBars = ScrollBars.Vertical;
+                textBox2.Size = new System.Drawing.Size(470, 95);
+                textBox2.Text = info[3];
+                textBox3.Text = info[4];
                 comboBox1.Text = info[5];
                 checkBox1.Text = info[6];
                 if (info[6] == "Có")
@@ -55,7 +61,7 @@ namespace UngDungDocTruyen
                     checkBox1.Checked = true;
                 }
 
-                string cover_link = story_folder_path + "//" + story_name + ".jpg";
+                string cover_link = story_folder_path + "//" + story_name + ".png";
                 cover_image.Load(cover_link);
                 cover_image.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -120,7 +126,7 @@ namespace UngDungDocTruyen
         {
             //Nếu checked thì text là Có, bỏ check thì text thành không
             string txt = checkBox1.Text;
-            if (txt == "Không")
+            if (txt.ToLower() == "không")
             {
                 checkBox1.Text = "Có";
             }
@@ -134,11 +140,11 @@ namespace UngDungDocTruyen
         {
             //Lưu các thông tin trang bìa đã nhập
             //Điều kiện: tiêu đề, thể loại, độ tuổi độc giả không trống
-            if (richTextBox1.Text.ToString() == "")
+            if (textBox1.Text.ToString() == "")
             {
                 MessageBox.Show("Tiêu đề trống", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
             }
-            else if (richTextBox3.Text.ToString() == "")
+            else if (textBox3.Text.ToString() == "")
             {
                 MessageBox.Show("Thể loại trống", "Vui lòng chọn thể loại", MessageBoxButtons.OK);
             }
@@ -149,7 +155,7 @@ namespace UngDungDocTruyen
             else
             {
                 //Không có vấn đề => lưu thông tin truyện đã nhập
-                string story_path = "D://DoAn//Story//"+ richTextBox1.Text.ToString();
+                string story_path = "D://DoAn//Story//"+ textBox1.Text.ToString();
                 //Tạo folder truyện
                 if (Directory.Exists(story_path))
                 {
@@ -164,39 +170,52 @@ namespace UngDungDocTruyen
                     File.WriteAllLines(story_path + "//view_like_chapter_count.txt", x);
 
                     //xóa ảnh bìa (cùng tên với ảnh bìa mới/nếu có)
-                    string path = story_path + "//" + richTextBox1.Text.ToString() + ".jpg";
+                    string path = story_path + "//" + textBox1.Text.ToString() + ".png";
                     if (File.Exists(path))
                     {
                         File.Delete(path);
                     }
                     //lưu ảnh bìa mới
-                    cover_image.Image.Save(story_path+"//"+richTextBox1.Text.ToString()+".jpg");
+                    cover_image.Image.Save(story_path+"//"+textBox1.Text.ToString()+".png");
 
                     //Nếu mô tả trống, cho nó là 1 hàng trống
-                    if (richTextBox2.Text.ToString() == "")
+                    if (textBox2.Text.ToString() == "")
                     {
-                        richTextBox2.Text = "\n";
+                        textBox2.Text = "\n";
                     }
 
                     //Lưu các thông tin khác
                     string[] info =
                     {
-                        richTextBox1.Text.ToString(),
+                        textBox1.Text.ToString(),
                         current_user_name_,
                         current_user_uname_,
-                        richTextBox2.Text.ToString(),
-                        richTextBox3.Text.ToString(),
+                        textBox2.Text.ToString(),
+                        textBox3.Text.ToString(),
                         comboBox1.Text.ToString(),
                         checkBox1.Text.ToString()
                     };
                     string info_path = story_path + "//0.txt";
                     File.WriteAllLines(info_path, info);
+                    //Cộng số lượng tác phẩm của tác giả lên 1
+                    path = "D://DoAn//user_profile_images//" + current_user_uname_ + ".txt";
+                    string[] y = File.ReadAllLines(path);
+                    y[1] = (Int32.Parse(y[1]) + 1).ToString();
+                    File.WriteAllLines(path, y);
+                    //Thêm tên tác phẩm vào nơi tổng hợp tất cả các tác phẩm của tác giả
+                    path = "D://DoAn//user_all_story//" + current_user_uname_ + ".txt";
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(textBox1.Text.ToString());
+                    }
+
 
                     //Chuyển sang viết truyện (tập 1)
 
                 }
 
             }
+            
 
         }
 

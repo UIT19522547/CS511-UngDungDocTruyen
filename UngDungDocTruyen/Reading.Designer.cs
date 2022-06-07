@@ -36,14 +36,14 @@
             this.cover_image = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.write_new_menu = new System.Windows.Forms.MenuStrip();
-            this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maturity_factor = new System.Windows.Forms.Label();
+            this.yeu_to_truong_thanh = new System.Windows.Forms.Label();
             this.rating = new System.Windows.Forms.Label();
             this.genre = new System.Windows.Forms.Label();
             this.sum = new System.Windows.Forms.Label();
-            this.story_name = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.write_new_menu = new System.Windows.Forms.MenuStrip();
+            this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.home, 0, 0);
@@ -113,7 +113,7 @@
             // 
             // current_user_image
             // 
-            this.current_user_image.Location = new System.Drawing.Point(1269, 6);
+            this.current_user_image.Location = new System.Drawing.Point(1263, 6);
             this.current_user_image.Name = "current_user_image";
             this.current_user_image.Size = new System.Drawing.Size(122, 114);
             this.current_user_image.TabIndex = 4;
@@ -133,12 +133,12 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
             this.panel6.Controls.Add(this.dataGridView1);
-            this.panel6.Controls.Add(this.write_new_menu);
-            this.panel6.Controls.Add(this.maturity_factor);
+            this.panel6.Controls.Add(this.yeu_to_truong_thanh);
             this.panel6.Controls.Add(this.rating);
             this.panel6.Controls.Add(this.genre);
             this.panel6.Controls.Add(this.sum);
-            this.panel6.Controls.Add(this.story_name);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.write_new_menu);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.label5);
@@ -165,14 +165,68 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 66);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 66);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(880, 539);
-            this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.TabIndex = 26;
+            // 
+            // yeu_to_truong_thanh
+            // 
+            this.yeu_to_truong_thanh.BackColor = System.Drawing.Color.Transparent;
+            this.yeu_to_truong_thanh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yeu_to_truong_thanh.ForeColor = System.Drawing.Color.White;
+            this.yeu_to_truong_thanh.Location = new System.Drawing.Point(346, 456);
+            this.yeu_to_truong_thanh.Name = "yeu_to_truong_thanh";
+            this.yeu_to_truong_thanh.Size = new System.Drawing.Size(391, 29);
+            this.yeu_to_truong_thanh.TabIndex = 25;
+            this.yeu_to_truong_thanh.Text = "không";
+            // 
+            // rating
+            // 
+            this.rating.BackColor = System.Drawing.Color.Transparent;
+            this.rating.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rating.ForeColor = System.Drawing.Color.White;
+            this.rating.Location = new System.Drawing.Point(152, 389);
+            this.rating.Name = "rating";
+            this.rating.Size = new System.Drawing.Size(692, 41);
+            this.rating.TabIndex = 24;
+            this.rating.Text = "6-13";
+            // 
+            // genre
+            // 
+            this.genre.BackColor = System.Drawing.Color.Transparent;
+            this.genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genre.ForeColor = System.Drawing.Color.White;
+            this.genre.Location = new System.Drawing.Point(154, 325);
+            this.genre.Name = "genre";
+            this.genre.Size = new System.Drawing.Size(732, 64);
+            this.genre.TabIndex = 23;
+            this.genre.Text = "Phiêu lưu";
+            // 
+            // sum
+            // 
+            this.sum.BackColor = System.Drawing.Color.Transparent;
+            this.sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sum.ForeColor = System.Drawing.Color.White;
+            this.sum.Location = new System.Drawing.Point(152, 155);
+            this.sum.Name = "sum";
+            this.sum.Size = new System.Drawing.Size(734, 159);
+            this.sum.TabIndex = 22;
+            this.sum.Text = "Harry potter và..";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(154, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(732, 69);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Harry potter và..";
             // 
             // write_new_menu
             // 
@@ -203,61 +257,6 @@
             this.cácChươngToolStripMenuItem.Size = new System.Drawing.Size(178, 42);
             this.cácChươngToolStripMenuItem.Text = "Các chương";
             this.cácChươngToolStripMenuItem.Click += new System.EventHandler(this.cácChươngToolStripMenuItem_Click);
-            // 
-            // maturity_factor
-            // 
-            this.maturity_factor.BackColor = System.Drawing.Color.Transparent;
-            this.maturity_factor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maturity_factor.ForeColor = System.Drawing.Color.White;
-            this.maturity_factor.Location = new System.Drawing.Point(373, 456);
-            this.maturity_factor.Name = "maturity_factor";
-            this.maturity_factor.Size = new System.Drawing.Size(513, 29);
-            this.maturity_factor.TabIndex = 18;
-            this.maturity_factor.Text = "Không";
-            // 
-            // rating
-            // 
-            this.rating.BackColor = System.Drawing.Color.Transparent;
-            this.rating.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rating.ForeColor = System.Drawing.Color.White;
-            this.rating.Location = new System.Drawing.Point(152, 389);
-            this.rating.Name = "rating";
-            this.rating.Size = new System.Drawing.Size(734, 29);
-            this.rating.TabIndex = 17;
-            this.rating.Text = "6-13";
-            // 
-            // genre
-            // 
-            this.genre.BackColor = System.Drawing.Color.Transparent;
-            this.genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genre.ForeColor = System.Drawing.Color.White;
-            this.genre.Location = new System.Drawing.Point(154, 325);
-            this.genre.Name = "genre";
-            this.genre.Size = new System.Drawing.Size(734, 43);
-            this.genre.TabIndex = 16;
-            this.genre.Text = "Viễn tưởng, Bí ẩn";
-            // 
-            // sum
-            // 
-            this.sum.BackColor = System.Drawing.Color.Transparent;
-            this.sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sum.ForeColor = System.Drawing.Color.White;
-            this.sum.Location = new System.Drawing.Point(152, 155);
-            this.sum.Name = "sum";
-            this.sum.Size = new System.Drawing.Size(734, 133);
-            this.sum.TabIndex = 15;
-            this.sum.Text = "Cậu bé còn sống Harry Potter nổi tiếng khắp thế giới phù thủy";
-            // 
-            // story_name
-            // 
-            this.story_name.BackColor = System.Drawing.Color.Transparent;
-            this.story_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.story_name.ForeColor = System.Drawing.Color.White;
-            this.story_name.Location = new System.Drawing.Point(152, 86);
-            this.story_name.Name = "story_name";
-            this.story_name.Size = new System.Drawing.Size(734, 29);
-            this.story_name.TabIndex = 14;
-            this.story_name.Text = "Harry Potter và hòn đá phù thủy";
             // 
             // label7
             // 
@@ -428,6 +427,7 @@
             this.profile_image.Size = new System.Drawing.Size(57, 54);
             this.profile_image.TabIndex = 14;
             this.profile_image.TabStop = false;
+            this.profile_image.Click += new System.EventHandler(this.au_name_Click);
             // 
             // au_name
             // 
@@ -453,6 +453,7 @@
             this.au_username.Size = new System.Drawing.Size(107, 25);
             this.au_username.TabIndex = 16;
             this.au_username.Text = "@jkrowling";
+            this.au_username.Click += new System.EventHandler(this.au_name_Click);
             // 
             // contextMenuStrip_profile_image
             // 
@@ -462,7 +463,7 @@
             this.trangCáNhânToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.contextMenuStrip_profile_image.Name = "contextMenuStrip_profile_image";
-            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 109);
+            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 76);
             // 
             // trangCáNhânToolStripMenuItem
             // 
@@ -520,7 +521,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox cover_image;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label story_name;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -528,10 +528,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label sum;
-        private System.Windows.Forms.Label genre;
-        private System.Windows.Forms.Label rating;
-        private System.Windows.Forms.Label maturity_factor;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label num_chapters;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -546,9 +542,14 @@
         private System.Windows.Forms.MenuStrip write_new_menu;
         private System.Windows.Forms.ToolStripMenuItem tTTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácChươngToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_profile_image;
         private System.Windows.Forms.ToolStripMenuItem trangCáNhânToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label sum;
+        private System.Windows.Forms.Label rating;
+        private System.Windows.Forms.Label genre;
+        private System.Windows.Forms.Label yeu_to_truong_thanh;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -229,7 +229,6 @@ namespace UngDungDocTruyen
 
         private void following_click(object sender, EventArgs e)
         {
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             profile_following y = (profile_following)sender;
             //click vào 1 user khác thì reset trang và bỏ thông tin của user đã click vào
             bool ismyprofile = (current_user_uname == y.Name.ToString());

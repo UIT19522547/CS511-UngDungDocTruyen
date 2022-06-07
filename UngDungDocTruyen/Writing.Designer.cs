@@ -41,12 +41,10 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.create_ok = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +54,9 @@
             this.write_new_menu = new System.Windows.Forms.MenuStrip();
             this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel_write_new.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover_image)).BeginInit();
@@ -65,8 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.but_back_home)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.write_new_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.write_new_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_write_new
@@ -126,7 +126,7 @@
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.tableLayoutPanel3.Controls.Add(this.panel8, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.but_back_home, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel9, 2, 0);
@@ -144,7 +144,7 @@
             this.panel8.Controls.Add(this.label8);
             this.panel8.Location = new System.Drawing.Point(59, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(996, 88);
+            this.panel8.Size = new System.Drawing.Size(993, 88);
             this.panel8.TabIndex = 4;
             // 
             // label9
@@ -187,7 +187,7 @@
             // panel9
             // 
             this.panel9.Controls.Add(this.create_ok);
-            this.panel9.Location = new System.Drawing.Point(1064, 6);
+            this.panel9.Location = new System.Drawing.Point(1061, 6);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(99, 88);
             this.panel9.TabIndex = 5;
@@ -209,13 +209,13 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.textBox3);
+            this.panel6.Controls.Add(this.textBox2);
+            this.panel6.Controls.Add(this.textBox1);
             this.panel6.Controls.Add(this.dataGridView1);
-            this.panel6.Controls.Add(this.richTextBox3);
             this.panel6.Controls.Add(this.checkBox1);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.comboBox1);
-            this.panel6.Controls.Add(this.richTextBox2);
-            this.panel6.Controls.Add(this.richTextBox1);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.label4);
@@ -228,27 +228,25 @@
             this.panel6.Size = new System.Drawing.Size(900, 571);
             this.panel6.TabIndex = 1;
             // 
-            // richTextBox3
+            // dataGridView1
             // 
-            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(141, 316);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(700, 44);
-            this.richTextBox3.TabIndex = 14;
-            this.richTextBox3.Text = "";
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 494);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(900, 77);
+            this.dataGridView1.TabIndex = 15;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
             this.checkBox1.Location = new System.Drawing.Point(374, 452);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(109, 33);
+            this.checkBox1.Size = new System.Drawing.Size(112, 36);
             this.checkBox1.TabIndex = 12;
             this.checkBox1.Text = "Không";
             this.checkBox1.UseVisualStyleBackColor = false;
@@ -274,7 +272,7 @@
             "Thiếu niên (13-18)",
             "Tuổi mới lớn (18-25)",
             "Tuổi trưởng thành (25+)"});
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "6-13",
@@ -283,33 +281,9 @@
             "25+"});
             this.comboBox1.Location = new System.Drawing.Point(140, 389);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(269, 37);
+            this.comboBox1.Size = new System.Drawing.Size(269, 40);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "Độ tuổi độc giả chính";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(141, 155);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(700, 121);
-            this.richTextBox2.TabIndex = 8;
-            this.richTextBox2.Text = "";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(141, 83);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(700, 44);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "";
             // 
             // label6
             // 
@@ -353,7 +327,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(24, 155);
+            this.label3.Location = new System.Drawing.Point(24, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 29);
             this.label3.TabIndex = 3;
@@ -411,16 +385,30 @@
             this.cácChươngToolStripMenuItem.Text = "Các chương";
             this.cácChươngToolStripMenuItem.Click += new System.EventHandler(this.cácChươngToolStripMenuItem_Click);
             // 
-            // dataGridView1
+            // textBox1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(900, 531);
-            this.dataGridView1.TabIndex = 15;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(140, 80);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(700, 39);
+            this.textBox1.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(140, 144);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(700, 26);
+            this.textBox2.TabIndex = 16;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(140, 310);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(700, 39);
+            this.textBox3.TabIndex = 17;
             // 
             // Writing
             // 
@@ -440,9 +428,9 @@
             this.panel9.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.write_new_menu.ResumeLayout(false);
             this.write_new_menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -464,8 +452,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -475,7 +461,9 @@
         private System.Windows.Forms.MenuStrip write_new_menu;
         private System.Windows.Forms.ToolStripMenuItem tTTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácChươngToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
