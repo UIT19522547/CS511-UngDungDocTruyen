@@ -32,7 +32,8 @@ namespace UngDungDocTruyen
             //Load ảnh vào các PictureBox
             home.Load("D://DoAn//Image//homeIcon4.png");
             home.SizeMode = PictureBoxSizeMode.StretchImage;
-            profile_image.Load("D://DoAn//Image//pika.jpg");
+            Image im = GetCopyImage("D://DoAn//Image//pika.jpg");
+            profile_image.Image = im;
             profile_image.SizeMode = PictureBoxSizeMode.StretchImage;
             
 
@@ -122,7 +123,8 @@ namespace UngDungDocTruyen
                 already_login = true;
                 current_user_user_name = current_user_uname;
                 string profile_img_path = "D://DoAn//user_profile_images//" + current_user_user_name + ".jpg";
-                profile_image.Load(profile_img_path);
+                im = GetCopyImage(profile_img_path);
+                profile_image.Image = im;
                 profile_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
@@ -243,7 +245,8 @@ namespace UngDungDocTruyen
                 login_button.Visible = false;
                 //Nếu đã login thì load ảnh từ folder user profile image lên (ảnh đại diện)
                 string link_anh_dai_dien = "D://DoAn//user_profile_images//" + current_user_user_name + ".jpg";
-                profile_image.Load(link_anh_dai_dien);
+                Image im = GetCopyImage(link_anh_dai_dien);
+                profile_image.Image = im;
                 profile_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
@@ -282,9 +285,12 @@ namespace UngDungDocTruyen
         private void trangCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //chuyển đến form trang cá nhân
+            //profile_image.Image.Dispose();
+            profile_image.BackgroundImage.Dispose();
             profile_image.Image = null;
             profile_image.BackgroundImage = null;
             var x = new profile_page(current_user_user_name, current_user_user_name, true);
+            x.RefToHome = this;
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -434,6 +440,15 @@ namespace UngDungDocTruyen
             login_button.Visible = true;
             already_login = false;
             current_user_user_name = "";
+        }
+
+        private Image GetCopyImage(string path)
+        {
+            using (Image im = Image.FromFile(path))
+            {
+                Bitmap bm = new Bitmap(im);
+                return bm;
+            }
         }
     }
 }

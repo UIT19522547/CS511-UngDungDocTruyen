@@ -163,7 +163,13 @@ namespace UngDungDocTruyen
                     //Số tập là 1 vì khi tạo truyện thành công => tự động tạo bản thảo của tập 1
                     File.WriteAllLines(story_path + "//view_like_chapter_count.txt", x);
 
-                    //lưu ảnh bìa
+                    //xóa ảnh bìa (cùng tên với ảnh bìa mới/nếu có)
+                    string path = story_path + "//" + richTextBox1.Text.ToString() + ".jpg";
+                    if (File.Exists(path))
+                    {
+                        File.Delete(path);
+                    }
+                    //lưu ảnh bìa mới
                     cover_image.Image.Save(story_path+"//"+richTextBox1.Text.ToString()+".jpg");
 
                     //Nếu mô tả trống, cho nó là 1 hàng trống
