@@ -61,7 +61,7 @@ namespace UngDungDocTruyen
             {
                 warning_username.Text = "Tên đăng nhập phải có từ 6 ký tự trở lên";
             }
-            else if (uname_pass.Contains(uname) && label2.Text.ToString()=="Đăng ký")
+            else if (uname_arr.Contains(uname) && label2.Text.ToString()=="Đăng ký")
             {
                 warning_username.Text = "Tên đăng nhập đã được sử dụng" +
                     "";
@@ -181,12 +181,14 @@ namespace UngDungDocTruyen
             {
                 string uname = username.Text.ToString();
                 string pass = password.Text.ToString();
+                
                 //Đang ký thành công
                 //Lưu tài khoản vào file chưa tài khoản và mật khẩu
-                using (StreamWriter sw = File.CreateText(uname_pass_path))
+                string path2 = "D://DoAn//username_password_saved.txt";
+                using (StreamWriter writer = new StreamWriter(path2, true))
                 {
-                    sw.WriteLine(uname);
-                    sw.WriteLine(pass);
+                    writer.WriteLine(uname);
+                    writer.WriteLine(pass);
                 }
                 //tạo mới các file cần thiết của 1 tài khoản
                 //tạo ảnh đại diện default (copy ảnh default và đổi tên thành tên tài khoản
@@ -195,7 +197,8 @@ namespace UngDungDocTruyen
                 System.IO.File.Copy(default_img_src, img_des);
                 //tạo file chứa số lượng tác phẩm, số lượng danh sách đọc và số lượng follower (+ tên của các follower)
                 string path = "D://DoAn//user_profile_images//" + uname + ".txt";
-                string[] x = { "0", "0", "0" };
+                //tên tài khoản khi mới tạo sẽ có default=username
+                string[] x = { uname,"0", "0", "0" ,"0"};
                 File.WriteAllLines(path, x);
                 //tạo file chứa tên tất cả tác phẩm của tài khoản (đây là tài khoản đăng ký mới nên file sẽ rỗng)
                 path = "D://DoAn//user_all_story//" + uname + ".txt";

@@ -33,11 +33,9 @@
             this.home = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.current_user_image = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip_profile_image = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.trangCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cover_image = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.write_new_menu = new System.Windows.Forms.MenuStrip();
             this.tTTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácChươngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,18 +61,22 @@
             this.profile_image = new System.Windows.Forms.PictureBox();
             this.au_name = new System.Windows.Forms.Label();
             this.au_username = new System.Windows.Forms.Label();
+            this.contextMenuStrip_profile_image = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.trangCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.home)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.current_user_image)).BeginInit();
-            this.contextMenuStrip_profile_image.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover_image)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.write_new_menu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profile_image)).BeginInit();
+            this.contextMenuStrip_profile_image.SuspendLayout();
             this.SuspendLayout();
             // 
             // home
@@ -96,7 +98,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.home, 0, 0);
@@ -111,35 +113,12 @@
             // 
             // current_user_image
             // 
-            this.current_user_image.ContextMenuStrip = this.contextMenuStrip_profile_image;
-            this.current_user_image.Location = new System.Drawing.Point(1263, 6);
+            this.current_user_image.Location = new System.Drawing.Point(1269, 6);
             this.current_user_image.Name = "current_user_image";
-            this.current_user_image.Size = new System.Drawing.Size(125, 114);
+            this.current_user_image.Size = new System.Drawing.Size(122, 114);
             this.current_user_image.TabIndex = 4;
             this.current_user_image.TabStop = false;
             this.current_user_image.Click += new System.EventHandler(this.current_user_image_Click);
-            // 
-            // contextMenuStrip_profile_image
-            // 
-            this.contextMenuStrip_profile_image.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStrip_profile_image.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip_profile_image.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trangCáNhânToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.contextMenuStrip_profile_image.Name = "contextMenuStrip_profile_image";
-            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 76);
-            // 
-            // trangCáNhânToolStripMenuItem
-            // 
-            this.trangCáNhânToolStripMenuItem.Name = "trangCáNhânToolStripMenuItem";
-            this.trangCáNhânToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
-            this.trangCáNhânToolStripMenuItem.Text = "Trang cá nhân";
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             // 
             // cover_image
             // 
@@ -153,6 +132,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.dataGridView1);
             this.panel6.Controls.Add(this.write_new_menu);
             this.panel6.Controls.Add(this.maturity_factor);
             this.panel6.Controls.Add(this.rating);
@@ -171,17 +151,40 @@
             this.panel6.Size = new System.Drawing.Size(900, 599);
             this.panel6.TabIndex = 12;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 66);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(880, 539);
+            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
             // write_new_menu
             // 
             this.write_new_menu.BackColor = System.Drawing.Color.Transparent;
-            this.write_new_menu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.write_new_menu.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.write_new_menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.write_new_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tTTToolStripMenuItem,
             this.cácChươngToolStripMenuItem});
             this.write_new_menu.Location = new System.Drawing.Point(0, 0);
             this.write_new_menu.Name = "write_new_menu";
-            this.write_new_menu.Size = new System.Drawing.Size(900, 40);
+            this.write_new_menu.Size = new System.Drawing.Size(900, 46);
             this.write_new_menu.TabIndex = 19;
             this.write_new_menu.Text = "menuStrip1";
             // 
@@ -189,24 +192,26 @@
             // 
             this.tTTToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tTTToolStripMenuItem.Name = "tTTToolStripMenuItem";
-            this.tTTToolStripMenuItem.Size = new System.Drawing.Size(210, 36);
+            this.tTTToolStripMenuItem.Size = new System.Drawing.Size(240, 42);
             this.tTTToolStripMenuItem.Text = "Thông tin truyện";
+            this.tTTToolStripMenuItem.Click += new System.EventHandler(this.tTTToolStripMenuItem_Click);
             // 
             // cácChươngToolStripMenuItem
             // 
             this.cácChươngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.cácChươngToolStripMenuItem.Name = "cácChươngToolStripMenuItem";
-            this.cácChươngToolStripMenuItem.Size = new System.Drawing.Size(156, 36);
+            this.cácChươngToolStripMenuItem.Size = new System.Drawing.Size(178, 42);
             this.cácChươngToolStripMenuItem.Text = "Các chương";
+            this.cácChươngToolStripMenuItem.Click += new System.EventHandler(this.cácChươngToolStripMenuItem_Click);
             // 
             // maturity_factor
             // 
             this.maturity_factor.BackColor = System.Drawing.Color.Transparent;
             this.maturity_factor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maturity_factor.ForeColor = System.Drawing.Color.White;
-            this.maturity_factor.Location = new System.Drawing.Point(332, 456);
+            this.maturity_factor.Location = new System.Drawing.Point(373, 456);
             this.maturity_factor.Name = "maturity_factor";
-            this.maturity_factor.Size = new System.Drawing.Size(554, 29);
+            this.maturity_factor.Size = new System.Drawing.Size(513, 29);
             this.maturity_factor.TabIndex = 18;
             this.maturity_factor.Text = "Không";
             // 
@@ -435,6 +440,7 @@
             this.au_name.Size = new System.Drawing.Size(141, 29);
             this.au_name.TabIndex = 15;
             this.au_name.Text = "J.K.Rowling";
+            this.au_name.Click += new System.EventHandler(this.au_name_Click);
             // 
             // au_username
             // 
@@ -447,6 +453,28 @@
             this.au_username.Size = new System.Drawing.Size(107, 25);
             this.au_username.TabIndex = 16;
             this.au_username.Text = "@jkrowling";
+            // 
+            // contextMenuStrip_profile_image
+            // 
+            this.contextMenuStrip_profile_image.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip_profile_image.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip_profile_image.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trangCáNhânToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.contextMenuStrip_profile_image.Name = "contextMenuStrip_profile_image";
+            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 109);
+            // 
+            // trangCáNhânToolStripMenuItem
+            // 
+            this.trangCáNhânToolStripMenuItem.Name = "trangCáNhânToolStripMenuItem";
+            this.trangCáNhânToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
+            this.trangCáNhânToolStripMenuItem.Text = "Trang cá nhân";
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             // 
             // Reading
             // 
@@ -468,10 +496,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.home)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.current_user_image)).EndInit();
-            this.contextMenuStrip_profile_image.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cover_image)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.write_new_menu.ResumeLayout(false);
             this.write_new_menu.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -480,6 +508,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profile_image)).EndInit();
+            this.contextMenuStrip_profile_image.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,11 +543,12 @@
         private System.Windows.Forms.Label au_name;
         private System.Windows.Forms.Label au_username;
         private System.Windows.Forms.PictureBox current_user_image;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_profile_image;
-        private System.Windows.Forms.ToolStripMenuItem trangCáNhânToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.MenuStrip write_new_menu;
         private System.Windows.Forms.ToolStripMenuItem tTTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácChươngToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_profile_image;
+        private System.Windows.Forms.ToolStripMenuItem trangCáNhânToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
     }
 }

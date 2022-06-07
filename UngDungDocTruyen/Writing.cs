@@ -16,10 +16,11 @@ namespace UngDungDocTruyen
         public Form RefToHome { get; set; }
         string current_user_name_;
         string current_user_uname_;
-        public Writing(string current_user_name,string current_user_username)
+        public Writing(string story_name,string current_user_name,string current_user_username)
         {
             InitializeComponent();
 
+            dataGridView1.Visible = false;
             current_user_name_ = current_user_name;
             current_user_uname_ = current_user_username;
             cácChươngToolStripMenuItem.Visible = false;
@@ -30,6 +31,75 @@ namespace UngDungDocTruyen
             tableLayoutPanel3.BackColor= Color.FromArgb(200, Color.Black);
             panel6.BackColor = Color.FromArgb(200, Color.Black);
             write_new_menu.BackColor = Color.FromArgb(200, Color.Black);
+            tTTToolStripMenuItem.BackColor = Color.Black;
+            cácChươngToolStripMenuItem.BackColor= Color.FromArgb(200, Color.Black);
+
+            //Nếu story_name="" /rỗng tức là viết truyện mới => k cần làm gì cả
+            //Nếu ngược lại là viết tiếp 1 truyện nào đó => load thông tin của truyện vào nơi viết để viết tiếp
+            if (story_name != "")
+            {
+                create_ok.Visible = false;
+                cácChươngToolStripMenuItem.Visible = true;
+                string story_folder_path = "D://DoAn//Story//" + story_name;
+                string story_info_path = story_folder_path + "//0.txt";
+                string[] info = File.ReadAllLines(story_info_path);
+
+                richTextBox1.Text = info[0];
+                label8.Text = info[0];
+                richTextBox2.Text = info[3];
+                richTextBox3.Text = info[4];
+                comboBox1.Text = info[5];
+                checkBox1.Text = info[6];
+                if (info[6] == "Có")
+                {
+                    checkBox1.Checked = true;
+                }
+
+                string cover_link = story_folder_path + "//" + story_name + ".jpg";
+                cover_image.Load(cover_link);
+                cover_image.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                //Load các chương vào datagridview
+                DataTable x = new DataTable();
+                x.Columns.Add("Bảng mục lục", typeof(string));
+                //Lấy tên tất cả các chương trong file 0.txt (ta đã lấy dc tất cả thông tin thành mảng story_info) => giờ chỉ cần lọc ra
+                //Tên các chương nếu có sẽ bắt đầu từ index 7
+                if (info.Length > 7)
+                {
+                    int count = 1;
+                    int j = 0;
+                    for (j = 7; j < info.Length; j++)
+                    {
+                        string s = info[j];
+                        if (s.Length < 4)
+                        {
+                            x.Rows.Add("Chương " + count.ToString());
+                        }
+                        else
+                        {
+                            x.Rows.Add("Chương " + count.ToString() + ": " + s.Substring(3, s.Length - 3));
+                        }
+                        count += 1;
+                    }
+                }
+
+                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 14);
+                dataGridView1.DefaultCellStyle.ForeColor = Color.White;
+                dataGridView1.DefaultCellStyle.BackColor = Color.Black;
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                dataGridView1.EnableHeadersVisualStyles = false;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                this.dataGridView1.AdvancedCellBorderStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
+                this.dataGridView1.AdvancedCellBorderStyle.Right = DataGridViewAdvancedCellBorderStyle.None;
+                this.dataGridView1.AdvancedCellBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                this.dataGridView1.AdvancedCellBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
+
+                dataGridView1.DataSource = x;
+                DataGridViewColumn column = dataGridView1.Columns[0];
+                column.Width = 580;
+            }
 
         }
 
@@ -68,7 +138,7 @@ namespace UngDungDocTruyen
             {
                 MessageBox.Show("Tiêu đề trống", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
             }
-            else if (comboBox.Text.ToString() == "Thể loại chính")
+            else if (richTextBox3.Text.ToString() == "")
             {
                 MessageBox.Show("Thể loại trống", "Vui lòng chọn thể loại", MessageBoxButtons.OK);
             }
@@ -109,7 +179,7 @@ namespace UngDungDocTruyen
                         current_user_name_,
                         current_user_uname_,
                         richTextBox2.Text.ToString(),
-                        comboBox.Text.ToString(),
+                        richTextBox3.Text.ToString(),
                         comboBox1.Text.ToString(),
                         checkBox1.Text.ToString()
                     };
@@ -126,12 +196,27 @@ namespace UngDungDocTruyen
 
         private void but_back_home_Click(object sender, EventArgs e)
         {
+            var x = new Form1(current_user_uname_);
             if (this.WindowState == FormWindowState.Maximized)
             {
-                this.RefToHome.WindowState = FormWindowState.Maximized;
+                x.WindowState = FormWindowState.Maximized;
             }
-            this.RefToHome.Show();
+            x.Show();
             this.Close();
+        }
+
+        private void cácChươngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            cácChươngToolStripMenuItem.BackColor = Color.Black;
+            tTTToolStripMenuItem.BackColor = Color.FromArgb(200, Color.Black);
+        }
+
+        private void tTTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = false;
+            cácChươngToolStripMenuItem.BackColor = Color.FromArgb(200, Color.Black);
+            tTTToolStripMenuItem.BackColor = Color.Black;
         }
     }
 }

@@ -46,6 +46,7 @@
             this.type7 = new System.Windows.Forms.ToolStripMenuItem();
             this.type8 = new System.Windows.Forms.ToolStripMenuItem();
             this.type9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.home = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.login_button = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.profile_image)).BeginInit();
             this.contextMenuStrip_profile_image.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tableLayoutPanel_story.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +85,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(358, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(486, 114);
+            this.panel1.Size = new System.Drawing.Size(516, 114);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -94,7 +96,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Location = new System.Drawing.Point(63, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(428, 5);
+            this.panel2.Size = new System.Drawing.Size(458, 5);
             this.panel2.TabIndex = 2;
             // 
             // textBox1
@@ -108,7 +110,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBox1.Location = new System.Drawing.Point(63, 43);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(391, 28);
+            this.textBox1.Size = new System.Drawing.Size(421, 28);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_story);
             // 
@@ -140,7 +142,8 @@
             this.type_book.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.type_book.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.type_book.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thểLoạiToolStripMenuItem});
+            this.thểLoạiToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.type_book.Location = new System.Drawing.Point(0, 0);
             this.type_book.Name = "type_book";
             this.type_book.Size = new System.Drawing.Size(140, 40);
@@ -217,6 +220,12 @@
             this.type9.Size = new System.Drawing.Size(237, 36);
             this.type9.Text = "Kịch tính";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 36);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
             // home
             // 
             this.home.BackColor = System.Drawing.Color.Transparent;
@@ -231,11 +240,10 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.login_button);
             this.panel4.Controls.Add(this.profile_image);
-            this.panel4.Location = new System.Drawing.Point(1039, 6);
+            this.panel4.Location = new System.Drawing.Point(1057, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(124, 114);
+            this.panel4.Size = new System.Drawing.Size(106, 114);
             this.panel4.TabIndex = 7;
             // 
             // login_button
@@ -244,9 +252,9 @@
             this.login_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_button.ForeColor = System.Drawing.Color.YellowGreen;
-            this.login_button.Location = new System.Drawing.Point(-10, -9);
+            this.login_button.Location = new System.Drawing.Point(623, 3);
             this.login_button.Name = "login_button";
-            this.login_button.Size = new System.Drawing.Size(143, 132);
+            this.login_button.Size = new System.Drawing.Size(128, 132);
             this.login_button.TabIndex = 0;
             this.login_button.Text = "Đăng nhập";
             this.login_button.UseVisualStyleBackColor = false;
@@ -255,10 +263,12 @@
             // profile_image
             // 
             this.profile_image.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("profile_image.BackgroundImage")));
+            this.profile_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.profile_image.ContextMenuStrip = this.contextMenuStrip_profile_image;
-            this.profile_image.Location = new System.Drawing.Point(-3, -9);
+            this.profile_image.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profile_image.Location = new System.Drawing.Point(-3, -6);
             this.profile_image.Name = "profile_image";
-            this.profile_image.Size = new System.Drawing.Size(154, 139);
+            this.profile_image.Size = new System.Drawing.Size(115, 126);
             this.profile_image.TabIndex = 0;
             this.profile_image.TabStop = false;
             this.profile_image.Click += new System.EventHandler(this.profile_image_Click);
@@ -285,15 +295,16 @@
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.my_story);
             this.panel5.Controls.Add(this.write_new);
-            this.panel5.Location = new System.Drawing.Point(853, 6);
+            this.panel5.Location = new System.Drawing.Point(883, 6);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(177, 111);
+            this.panel5.Size = new System.Drawing.Size(165, 111);
             this.panel5.TabIndex = 8;
             // 
             // my_story
@@ -304,9 +315,9 @@
             this.my_story.BackColor = System.Drawing.Color.Black;
             this.my_story.Cursor = System.Windows.Forms.Cursors.Hand;
             this.my_story.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.my_story.Location = new System.Drawing.Point(-6, 55);
+            this.my_story.Location = new System.Drawing.Point(-6, 49);
             this.my_story.Name = "my_story";
-            this.my_story.Size = new System.Drawing.Size(195, 65);
+            this.my_story.Size = new System.Drawing.Size(183, 71);
             this.my_story.TabIndex = 1;
             this.my_story.Text = "Truyện của tôi";
             this.my_story.UseVisualStyleBackColor = false;
@@ -320,9 +331,9 @@
             this.write_new.BackColor = System.Drawing.Color.Black;
             this.write_new.Cursor = System.Windows.Forms.Cursors.Hand;
             this.write_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.write_new.Location = new System.Drawing.Point(-6, -9);
+            this.write_new.Location = new System.Drawing.Point(-6, -12);
             this.write_new.Name = "write_new";
-            this.write_new.Size = new System.Drawing.Size(195, 68);
+            this.write_new.Size = new System.Drawing.Size(183, 68);
             this.write_new.TabIndex = 0;
             this.write_new.Text = "Viết truyện mới";
             this.write_new.UseVisualStyleBackColor = false;
@@ -338,6 +349,7 @@
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
+            this.tableLayoutPanel_story.Controls.Add(this.login_button, 1, 0);
             this.tableLayoutPanel_story.Location = new System.Drawing.Point(62, 262);
             this.tableLayoutPanel_story.Name = "tableLayoutPanel_story";
             this.tableLayoutPanel_story.RowCount = 2;
@@ -354,8 +366,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 4, 0);
@@ -376,18 +388,18 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(56, 195);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(487, 37);
+            this.label1.Size = new System.Drawing.Size(340, 37);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Truyện có nhiều lượt thích nhất";
+            this.label1.Text = "Truyện dành cho bạn";
             // 
             // panel10
             // 
             this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel10.BackColor = System.Drawing.Color.DarkCyan;
-            this.panel10.Location = new System.Drawing.Point(598, 218);
+            this.panel10.Location = new System.Drawing.Point(402, 218);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(548, 5);
+            this.panel10.Size = new System.Drawing.Size(746, 5);
             this.panel10.TabIndex = 12;
             // 
             // Form1
@@ -417,6 +429,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.profile_image)).EndInit();
             this.contextMenuStrip_profile_image.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel_story.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -454,6 +467,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_profile_image;
         private System.Windows.Forms.ToolStripMenuItem trangCáNhânToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
