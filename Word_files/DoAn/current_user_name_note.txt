@@ -1,0 +1,2 @@
+
+chứa tình trạng đã đăng nhập (true) hay chưa (false) và username đăng nhập hiện tại
