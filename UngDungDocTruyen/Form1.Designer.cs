@@ -49,11 +49,11 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.home = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.login_button = new System.Windows.Forms.Button();
             this.profile_image = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip_profile_image = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trangCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.login_button = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.my_story = new System.Windows.Forms.Button();
             this.write_new = new System.Windows.Forms.Button();
@@ -90,7 +90,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(358, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 114);
+            this.panel1.Size = new System.Drawing.Size(510, 114);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -101,7 +101,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Location = new System.Drawing.Point(63, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(455, 5);
+            this.panel2.Size = new System.Drawing.Size(452, 5);
             this.panel2.TabIndex = 2;
             // 
             // textBox1
@@ -115,7 +115,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBox1.Location = new System.Drawing.Point(63, 43);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(418, 28);
+            this.textBox1.Size = new System.Drawing.Size(415, 28);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_story);
             // 
@@ -174,56 +174,56 @@
             // type1
             // 
             this.type1.Name = "type1";
-            this.type1.Size = new System.Drawing.Size(237, 36);
+            this.type1.Size = new System.Drawing.Size(252, 36);
             this.type1.Text = "Bí ẩn";
             // 
             // type2
             // 
             this.type2.Name = "type2";
-            this.type2.Size = new System.Drawing.Size(237, 36);
-            this.type2.Text = "Siêu nhiên";
+            this.type2.Size = new System.Drawing.Size(252, 36);
+            this.type2.Text = "Phiêu lưu";
             // 
             // type3
             // 
             this.type3.Name = "type3";
-            this.type3.Size = new System.Drawing.Size(237, 36);
+            this.type3.Size = new System.Drawing.Size(252, 36);
             this.type3.Text = "Kinh dị";
             // 
             // type4
             // 
             this.type4.Name = "type4";
-            this.type4.Size = new System.Drawing.Size(237, 36);
+            this.type4.Size = new System.Drawing.Size(252, 36);
             this.type4.Text = "Hài hước";
             // 
             // type5
             // 
             this.type5.Name = "type5";
-            this.type5.Size = new System.Drawing.Size(237, 36);
+            this.type5.Size = new System.Drawing.Size(252, 36);
             this.type5.Text = "Fanfiction";
             // 
             // type6
             // 
             this.type6.Name = "type6";
-            this.type6.Size = new System.Drawing.Size(237, 36);
+            this.type6.Size = new System.Drawing.Size(252, 36);
             this.type6.Text = "Truyện dài";
             // 
             // type7
             // 
             this.type7.Name = "type7";
-            this.type7.Size = new System.Drawing.Size(237, 36);
+            this.type7.Size = new System.Drawing.Size(252, 36);
             this.type7.Text = "Truyện ngắn";
             // 
             // type8
             // 
             this.type8.Name = "type8";
-            this.type8.Size = new System.Drawing.Size(237, 36);
+            this.type8.Size = new System.Drawing.Size(252, 36);
             this.type8.Text = "Lãng mạn";
             // 
             // type9
             // 
             this.type9.Name = "type9";
-            this.type9.Size = new System.Drawing.Size(237, 36);
-            this.type9.Text = "Kịch tính";
+            this.type9.Size = new System.Drawing.Size(252, 36);
+            this.type9.Text = "Tiểu thuyết";
             // 
             // toolStripMenuItem1
             // 
@@ -247,10 +247,24 @@
             // 
             this.panel4.Controls.Add(this.login_button);
             this.panel4.Controls.Add(this.profile_image);
-            this.panel4.Location = new System.Drawing.Point(1054, 6);
+            this.panel4.Location = new System.Drawing.Point(1051, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(118, 114);
             this.panel4.TabIndex = 7;
+            // 
+            // login_button
+            // 
+            this.login_button.BackColor = System.Drawing.Color.Black;
+            this.login_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_button.ForeColor = System.Drawing.Color.YellowGreen;
+            this.login_button.Location = new System.Drawing.Point(-4, -12);
+            this.login_button.Name = "login_button";
+            this.login_button.Size = new System.Drawing.Size(128, 132);
+            this.login_button.TabIndex = 0;
+            this.login_button.Text = "Đăng nhập";
+            this.login_button.UseVisualStyleBackColor = false;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
             // profile_image
             // 
@@ -289,26 +303,12 @@
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
-            // login_button
-            // 
-            this.login_button.BackColor = System.Drawing.Color.Black;
-            this.login_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_button.ForeColor = System.Drawing.Color.YellowGreen;
-            this.login_button.Location = new System.Drawing.Point(-4, -12);
-            this.login_button.Name = "login_button";
-            this.login_button.Size = new System.Drawing.Size(128, 132);
-            this.login_button.TabIndex = 0;
-            this.login_button.Text = "Đăng nhập";
-            this.login_button.UseVisualStyleBackColor = false;
-            this.login_button.Click += new System.EventHandler(this.login_button_Click);
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.my_story);
             this.panel5.Controls.Add(this.write_new);
-            this.panel5.Location = new System.Drawing.Point(880, 6);
+            this.panel5.Location = new System.Drawing.Point(877, 6);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(165, 111);
             this.panel5.TabIndex = 8;
@@ -372,7 +372,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 4, 0);
