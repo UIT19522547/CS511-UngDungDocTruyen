@@ -59,8 +59,6 @@
             this.write_new = new System.Windows.Forms.Button();
             this.tableLayoutPanel_story = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tácPhẩmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tácGiảToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +88,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(358, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(510, 114);
+            this.panel1.Size = new System.Drawing.Size(507, 114);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -101,7 +99,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Location = new System.Drawing.Point(63, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(452, 5);
+            this.panel2.Size = new System.Drawing.Size(449, 5);
             this.panel2.TabIndex = 2;
             // 
             // textBox1
@@ -115,7 +113,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.GreenYellow;
             this.textBox1.Location = new System.Drawing.Point(63, 43);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(415, 28);
+            this.textBox1.Size = new System.Drawing.Size(412, 28);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.search_story);
             // 
@@ -174,55 +172,55 @@
             // type1
             // 
             this.type1.Name = "type1";
-            this.type1.Size = new System.Drawing.Size(252, 36);
+            this.type1.Size = new System.Drawing.Size(237, 36);
             this.type1.Text = "Bí ẩn";
             // 
             // type2
             // 
             this.type2.Name = "type2";
-            this.type2.Size = new System.Drawing.Size(252, 36);
+            this.type2.Size = new System.Drawing.Size(237, 36);
             this.type2.Text = "Phiêu lưu";
             // 
             // type3
             // 
             this.type3.Name = "type3";
-            this.type3.Size = new System.Drawing.Size(252, 36);
+            this.type3.Size = new System.Drawing.Size(237, 36);
             this.type3.Text = "Kinh dị";
             // 
             // type4
             // 
             this.type4.Name = "type4";
-            this.type4.Size = new System.Drawing.Size(252, 36);
+            this.type4.Size = new System.Drawing.Size(237, 36);
             this.type4.Text = "Hài hước";
             // 
             // type5
             // 
             this.type5.Name = "type5";
-            this.type5.Size = new System.Drawing.Size(252, 36);
+            this.type5.Size = new System.Drawing.Size(237, 36);
             this.type5.Text = "Fanfiction";
             // 
             // type6
             // 
             this.type6.Name = "type6";
-            this.type6.Size = new System.Drawing.Size(252, 36);
+            this.type6.Size = new System.Drawing.Size(237, 36);
             this.type6.Text = "Truyện dài";
             // 
             // type7
             // 
             this.type7.Name = "type7";
-            this.type7.Size = new System.Drawing.Size(252, 36);
+            this.type7.Size = new System.Drawing.Size(237, 36);
             this.type7.Text = "Truyện ngắn";
             // 
             // type8
             // 
             this.type8.Name = "type8";
-            this.type8.Size = new System.Drawing.Size(252, 36);
+            this.type8.Size = new System.Drawing.Size(237, 36);
             this.type8.Text = "Lãng mạn";
             // 
             // type9
             // 
             this.type9.Name = "type9";
-            this.type9.Size = new System.Drawing.Size(252, 36);
+            this.type9.Size = new System.Drawing.Size(237, 36);
             this.type9.Text = "Tiểu thuyết";
             // 
             // toolStripMenuItem1
@@ -247,7 +245,7 @@
             // 
             this.panel4.Controls.Add(this.login_button);
             this.panel4.Controls.Add(this.profile_image);
-            this.panel4.Location = new System.Drawing.Point(1051, 6);
+            this.panel4.Location = new System.Drawing.Point(1048, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(118, 114);
             this.panel4.TabIndex = 7;
@@ -260,7 +258,7 @@
             this.login_button.ForeColor = System.Drawing.Color.YellowGreen;
             this.login_button.Location = new System.Drawing.Point(-4, -12);
             this.login_button.Name = "login_button";
-            this.login_button.Size = new System.Drawing.Size(128, 132);
+            this.login_button.Size = new System.Drawing.Size(141, 132);
             this.login_button.TabIndex = 0;
             this.login_button.Text = "Đăng nhập";
             this.login_button.UseVisualStyleBackColor = false;
@@ -308,7 +306,7 @@
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.my_story);
             this.panel5.Controls.Add(this.write_new);
-            this.panel5.Location = new System.Drawing.Point(877, 6);
+            this.panel5.Location = new System.Drawing.Point(874, 6);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(165, 111);
             this.panel5.TabIndex = 8;
@@ -347,20 +345,21 @@
             // 
             // tableLayoutPanel_story
             // 
-            this.tableLayoutPanel_story.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel_story.AutoScroll = true;
             this.tableLayoutPanel_story.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel_story.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel_story.ColumnCount = 3;
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
             this.tableLayoutPanel_story.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 620F));
-            this.tableLayoutPanel_story.Location = new System.Drawing.Point(62, 262);
+            this.tableLayoutPanel_story.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_story.Location = new System.Drawing.Point(0, 126);
             this.tableLayoutPanel_story.Name = "tableLayoutPanel_story";
-            this.tableLayoutPanel_story.RowCount = 2;
+            this.tableLayoutPanel_story.RowCount = 3;
             this.tableLayoutPanel_story.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 420F));
             this.tableLayoutPanel_story.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 420F));
-            this.tableLayoutPanel_story.Size = new System.Drawing.Size(1086, 520);
+            this.tableLayoutPanel_story.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 420F));
+            this.tableLayoutPanel_story.Size = new System.Drawing.Size(1178, 576);
             this.tableLayoutPanel_story.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -372,7 +371,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 4, 0);
@@ -385,27 +384,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1178, 126);
             this.tableLayoutPanel1.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 195);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(340, 37);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Truyện dành cho bạn";
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel10.BackColor = System.Drawing.Color.DarkCyan;
-            this.panel10.Location = new System.Drawing.Point(402, 218);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(746, 5);
-            this.panel10.TabIndex = 12;
             // 
             // menuStrip1
             // 
@@ -446,13 +424,16 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoScroll = true;
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 126);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -466,15 +447,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1178, 702);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panel10);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel_story);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
@@ -525,8 +503,6 @@
         private System.Windows.Forms.Button my_story;
         private System.Windows.Forms.Button write_new;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox profile_image;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_profile_image;
         private System.Windows.Forms.ToolStripMenuItem trangCáNhânToolStripMenuItem;

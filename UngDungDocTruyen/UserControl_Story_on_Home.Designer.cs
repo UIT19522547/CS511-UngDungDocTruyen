@@ -70,7 +70,7 @@
             // story_summary
             // 
             this.story_summary.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.story_summary.ForeColor = System.Drawing.Color.DimGray;
+            this.story_summary.ForeColor = System.Drawing.Color.Black;
             this.story_summary.Location = new System.Drawing.Point(243, 153);
             this.story_summary.Name = "story_summary";
             this.story_summary.Size = new System.Drawing.Size(312, 171);

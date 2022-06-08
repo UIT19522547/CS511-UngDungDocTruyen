@@ -20,6 +20,7 @@ namespace UngDungDocTruyen
         bool already_login = false;
         string current_user_user_name = "";
         string current_field = "Tác phẩm";
+        int[] index = Enumerable.Range(0, 14).ToArray();
 
         public Form1(string current_user_uname)
         {
@@ -66,19 +67,23 @@ namespace UngDungDocTruyen
 
             }
 
+            //Xáo index để truyện xuất hiện random không giống nhau
+            Random random = new Random();
+            index = index.OrderBy(x => random.Next()).ToArray();
             //Lấy tên các folder con trong đường dẫn
             string[] story = Directory.GetDirectories(link_story_folder);
             //Thêm truyện vào tablelayoutpanel
             int i = 0;
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < 9; i++)
             {
+                int ind = index[i];
                 //Link đến folder chứa tập truyện, thông tin của truyện, ảnh bìa...
-                string link_folder_truyen = story[i];
+                string link_folder_truyen = story[ind];
                 string link_infor_truyen = link_folder_truyen + "//" + "0.txt";
                 Console.WriteLine(link_infor_truyen);
                 string[] infor_truyen= File.ReadLines(link_infor_truyen).ToArray();
                 //dòng đầu tiên trong file là tên truyện 
-                string ten_truyen = story[i].Remove(0, link_story_folder.Length+1);
+                string ten_truyen = story[ind].Remove(0, link_story_folder.Length+1);
                 //dòng 2 là tên đăng nhập của tác giả (username)
                 string ten_dang_nhap_tac_gia = infor_truyen[2];
                 //dòng thứ 3 là tóm tắt truyện
@@ -93,7 +98,7 @@ namespace UngDungDocTruyen
                 
 
                 //link ảnh bìa
-                string link_anh_bia = story[i] + "//" + ten_truyen + ".png";
+                string link_anh_bia = story[ind] + "//" + ten_truyen + ".png";
 
                 var x = new UserControl_Story_on_Home(ten_truyen, ten_dang_nhap_tac_gia, view_count, like_count, chapter_count,sum,link_anh_bia);
 
