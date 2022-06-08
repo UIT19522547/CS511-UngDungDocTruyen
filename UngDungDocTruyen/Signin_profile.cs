@@ -57,17 +57,21 @@ namespace UngDungDocTruyen
             //Xem tài khoản đang đăng nhập có đang theo dõi profile đó không
             if (!my_profile)
             {
-                int j = 0;
-                string path2= "D://DoAn//user_profile_images//" + current_user_username + ".txt";
-                string[] data = File.ReadAllLines(path2);
-                for (j = 5; j < data.Length; j++)
+                if (current_user_username != "")
                 {
-                    if (data[j] == username_of_profile)
+                    int j = 0;
+                    string path2 = "D://DoAn//user_profile_images//" + current_user_username + ".txt";
+                    string[] data = File.ReadAllLines(path2);
+                    for (j = 5; j < data.Length; j++)
                     {
-                        but_follow.Text = "Đang theo dõi";
-                        break;
+                        if (data[j] == username_of_profile)
+                        {
+                            but_follow.Text = "Đang theo dõi";
+                            break;
+                        }
                     }
                 }
+                
             }
 
 
@@ -183,46 +187,50 @@ namespace UngDungDocTruyen
             }
 
 
-            //Thêm những người mà bạn đang theo dõi vào (following)
-            //Lấy tên các folder con trong đường dẫn
-            string following_path = "D://DoAn//user_profile_images//" + current_user_uname + ".txt";
-
-            string[] info = File.ReadAllLines(following_path);
-            //Lấy ra số lượng người đang following
-            int following = Int32.Parse(info[4]);
-            //Thêm info của những người đang following vào tablelayoutpanel
-            i = 5;
-            
-            for (i = 5; i < info.Length; i++)
+            //Thêm những người mà bạn đang theo dõi vào (following) (nếu có đăng nhập
+            if (current_user_uname != "")
             {
-                string following_uname = info[i];
+                //Lấy tên các folder con trong đường dẫn
+                string following_path = "D://DoAn//user_profile_images//" + current_user_uname + ".txt";
 
-                string info2_path = "D://DoAn//user_profile_images//" + following_uname + ".txt";
-                string[] info2 = File.ReadAllLines(info2_path);
-                string following_name = info2[0];
-                string story_count = info2[1];
-                string follower_count = info2[3];
-                string profile_img_path = "D://DoAn//user_profile_images//" + following_uname + ".jpg";
+                string[] info = File.ReadAllLines(following_path);
+                //Lấy ra số lượng người đang following
+                int following = Int32.Parse(info[4]);
+                //Thêm info của những người đang following vào tablelayoutpanel
+                i = 5;
 
+                for (i = 5; i < info.Length; i++)
+                {
+                    string following_uname = info[i];
 
-                var x = new profile_following(following_name, following_uname, story_count, follower_count);
-
-                //đặt tên cho user control chứa truyện là tên truyện
-                x.Name = following_uname;
-
-                //add event function click vào truyện
-                x.Click += new EventHandler(following_click);
-
-                //Đổi cusor của control
-                x.Cursor = System.Windows.Forms.Cursors.Hand;
-
-                x.BackColor = Color.FromArgb(200, Color.Black);
-
-                //add profile tóm tắt của người hiện đang theo dõi
-                tableLayoutPanel2.Controls.Add(x);
+                    string info2_path = "D://DoAn//user_profile_images//" + following_uname + ".txt";
+                    string[] info2 = File.ReadAllLines(info2_path);
+                    string following_name = info2[0];
+                    string story_count = info2[1];
+                    string follower_count = info2[3];
+                    string profile_img_path = "D://DoAn//user_profile_images//" + following_uname + ".jpg";
 
 
+                    var x = new profile_following(following_name, following_uname, story_count, follower_count);
+
+                    //đặt tên cho user control chứa truyện là tên truyện
+                    x.Name = following_uname;
+
+                    //add event function click vào truyện
+                    x.Click += new EventHandler(following_click);
+
+                    //Đổi cusor của control
+                    x.Cursor = System.Windows.Forms.Cursors.Hand;
+
+                    x.BackColor = Color.FromArgb(200, Color.Black);
+
+                    //add profile tóm tắt của người hiện đang theo dõi
+                    tableLayoutPanel2.Controls.Add(x);
+
+
+                }
             }
+            
             
             
         }
@@ -275,7 +283,11 @@ namespace UngDungDocTruyen
 
         private void but_follow_Click(object sender, EventArgs e)
         {
-            if(but_follow.Text.ToString()=="Theo dõi")
+            if (current_user_uname == "")
+            {
+                MessageBox.Show("Bạn phải đăng nhập để theo dõi người dùng này");
+            }
+            else if(but_follow.Text.ToString()=="Theo dõi")
             {
                 but_follow.Text = "Đang theo dõi";
                 //thêm username của user này vào tài khoản hiện tại
