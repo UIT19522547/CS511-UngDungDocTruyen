@@ -14,7 +14,7 @@ namespace UngDungDocTruyen
     public partial class Reading : Form
     {
         public Form RefToHome { get; set; }
-        string current_user_uname, au_uname;
+        string current_user_uname, au_uname,current_story_name;
         public Reading(string story_name,string author_user_name,string current_user_name)
         {
             InitializeComponent();
@@ -36,6 +36,7 @@ namespace UngDungDocTruyen
             string[] story_info = File.ReadAllLines(story_info_folder_link);
             string[] story_info2 = File.ReadAllLines(story_view_like_chapter_link);
 
+            current_story_name = story_info[0];
             au_name.Text = story_info[1];
             au_username.Text = story_info[2];
             num_views.Text = story_info2[0];
@@ -123,8 +124,15 @@ namespace UngDungDocTruyen
 
         private void click_chapter(Object sender, DataGridViewCellEventArgs e)
         {
-            //click vào sẽ ra chapter mới
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAA");
+            int ind = dataGridView1.CurrentCell.RowIndex;
+            string path = "D://DoAn//Story//" + current_story_name + "//view_like_chapter_count.txt";
+            string[] x = File.ReadAllLines(path);
+            //Tăng số lượt đọc lên 1
+            x[0] = (Int32.Parse(x[0]) + 1).ToString();
+            File.WriteAllLines(path, x);
+
+            //chuyển sang trang đọc chapter
+
         }
 
         private void current_user_image_Click(object sender, EventArgs e)
