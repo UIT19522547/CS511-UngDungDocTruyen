@@ -12,6 +12,7 @@ namespace UngDungDocTruyen
 {
     public partial class UserControl_Story_on_Home : UserControl
     {
+        public Form RefToHome { get; set; }
         public UserControl_Story_on_Home(string ten_truyen,string ten_dang_nhap_tac_gia,string view_count,string like_count,string num_of_chapters, string sum,string link_anh_bia)
         {
             InitializeComponent();
@@ -28,6 +29,11 @@ namespace UngDungDocTruyen
         {
             get { return story_name.Text; }
             set { story_name.Text = value; }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            InvokeOnClick(this, new EventArgs());
         }
     }
 }
