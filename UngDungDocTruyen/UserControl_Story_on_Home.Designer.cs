@@ -57,6 +57,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(227, 312);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.label4_Click);
             // 
             // story_name
             // 
@@ -66,6 +67,7 @@
             this.story_name.Size = new System.Drawing.Size(312, 35);
             this.story_name.TabIndex = 1;
             this.story_name.Text = "Tên truyện";
+            this.story_name.Click += new System.EventHandler(this.label4_Click);
             // 
             // story_summary
             // 
@@ -77,6 +79,7 @@
             this.story_summary.TabIndex = 2;
             this.story_summary.Text = "Tóm tắt câu chuyện: truyện kể về 7 anh em đại diện cho 7 đại tội sống trong 1 ngô" +
     "i nhà ở thế giới của quỷ";
+            this.story_summary.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel_view_like_chapters
             // 
@@ -90,6 +93,7 @@
             this.panel_view_like_chapters.Name = "panel_view_like_chapters";
             this.panel_view_like_chapters.Size = new System.Drawing.Size(307, 45);
             this.panel_view_like_chapters.TabIndex = 3;
+            this.panel_view_like_chapters.Click += new System.EventHandler(this.label4_Click);
             // 
             // num_chapters
             // 
@@ -159,6 +163,7 @@
             this.label4.Size = new System.Drawing.Size(64, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tác giả:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // author_username
             // 
@@ -167,6 +172,7 @@
             this.author_username.Size = new System.Drawing.Size(232, 24);
             this.author_username.TabIndex = 6;
             this.author_username.Text = "ABC";
+            this.author_username.Click += new System.EventHandler(this.label4_Click);
             // 
             // UserControl_Story_on_Home
             // 
