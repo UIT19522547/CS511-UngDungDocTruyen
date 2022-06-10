@@ -60,6 +60,45 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Reading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reading.Designer.cs">
+      <DependentUpon>Reading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Signin_profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Signin_profile.Designer.cs">
+      <DependentUpon>Signin_profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMyBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMyBook.Designer.cs">
+      <DependentUpon>UserControlMyBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_Story_on_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_Story_on_Home.Designer.cs">
+      <DependentUpon>UserControl_Story_on_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Writing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Writing.Designer.cs">
+      <DependentUpon>Writing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WritingBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WritingBook.Designer.cs">
+      <DependentUpon>WritingBook.cs</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +114,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
+=======
+    <EmbeddedResource Include="Reading.resx">
+      <DependentUpon>Reading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Signin_profile.resx">
+      <DependentUpon>Signin_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMyBook.resx">
+      <DependentUpon>UserControlMyBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_Story_on_Home.resx">
+      <DependentUpon>UserControl_Story_on_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Writing.resx">
+      <DependentUpon>Writing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WritingBook.resx">
+      <DependentUpon>WritingBook.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> Stashed changes
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
