@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,235 +13,623 @@ namespace UngDungDocTruyen
 {
     public partial class Writing : Form
     {
-        public Form RefToHome { get; set; }
-        string current_user_name_;
-        string current_user_uname_;
-        public Writing(string story_name,string current_user_name,string current_user_username)
+        string userName;
+        string authorName;
+        public Writing(string currentAuthor, string currentUserName)
         {
             InitializeComponent();
+            userName = currentUserName;
+            authorName = currentAuthor;
 
-            dataGridView1.Visible = false;
-            current_user_name_ = current_user_name;
-            current_user_uname_ = current_user_username;
-            cácChươngToolStripMenuItem.Visible = false;
+            LoadAllBookInfo();
+            dgvChapters.Columns.Add("Chapters", "Các chương");
+            dgvChapters.Columns.Add("Status", "Tình trạng");
+            dgvChapters.Columns["Chapters"].Width = 300;
+            dgvChapters.Columns["Status"].Width = 150;
 
-            //Load ảnh mũi tên quay lại
-            but_back_home.Load("D://DoAn//Image//back2.png");
-            but_back_home.SizeMode = PictureBoxSizeMode.StretchImage;
-            tableLayoutPanel3.BackColor= Color.FromArgb(200, Color.Black);
-            panel6.BackColor = Color.FromArgb(200, Color.Black);
-            write_new_menu.BackColor = Color.FromArgb(200, Color.Black);
-            tTTToolStripMenuItem.BackColor = Color.Black;
-            cácChươngToolStripMenuItem.BackColor= Color.FromArgb(200, Color.Black);
+            tlpMyBook.RowCount = 0;
+            tlpMyBook.RowStyles.Clear();
+            pnlBookInfo.Visible = false;
 
-            //Nếu story_name="" /rỗng tức là viết truyện mới => k cần làm gì cả
-            //Nếu ngược lại là viết tiếp 1 truyện nào đó => load thông tin của truyện vào nơi viết để viết tiếp
-            if (story_name != "")
+            tsmiBookInfo.ForeColor = Color.GreenYellow;
+            tấtCảTruyệnToolStripMenuItem.ForeColor = Color.GreenYellow;
+            pnlChapters.Visible = false;
+
+            pnlWrite.Visible = false;
+
+
+            //load ảnh current user (tài khoản đang đăng nhập)/nếu có
+            if (currentUserName != "")
             {
-                create_ok.Visible = false;
-                cácChươngToolStripMenuItem.Visible = true;
-                string story_folder_path = "D://DoAn//Story//" + story_name;
-                string story_info_path = story_folder_path + "//0.txt";
-                string[] info = File.ReadAllLines(story_info_path, Encoding.UTF8);
-
-
-                //richTextBox2.LoadFile(story_info_path, RichTextBoxStreamType.PlainText);
-                textBox1.Text = info[0];
-                textBox1.Text = textBox1.Text;
-                label8.Text = info[0];
-                textBox2.AutoSize = false;
-                textBox2.ScrollBars = ScrollBars.Vertical;
-                textBox2.Size = new System.Drawing.Size(470, 95);
-                textBox2.Text = info[3];
-                textBox3.Text = info[4];
-                comboBox1.Text = info[5];
-                checkBox1.Text = info[6];
-                if (info[6] == "Có")
-                {
-                    checkBox1.Checked = true;
-                }
-
-                string cover_link = story_folder_path + "//" + story_name + ".png";
-                cover_image.Load(cover_link);
-                cover_image.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                //Load các chương vào datagridview
-                DataTable x = new DataTable();
-                x.Columns.Add("Bảng mục lục", typeof(string));
-                //Lấy tên tất cả các chương trong file 0.txt (ta đã lấy dc tất cả thông tin thành mảng story_info) => giờ chỉ cần lọc ra
-                //Tên các chương nếu có sẽ bắt đầu từ index 7
-                if (info.Length > 7)
-                {
-                    int count = 1;
-                    int j = 0;
-                    for (j = 7; j < info.Length; j++)
-                    {
-                        string s = info[j];
-                        if (s.Length < 4)
-                        {
-                            x.Rows.Add("Chương " + count.ToString());
-                        }
-                        else
-                        {
-                            x.Rows.Add("Chương " + count.ToString() + ": " + s.Substring(3, s.Length - 3));
-                        }
-                        count += 1;
-                    }
-                }
-
-                dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 14);
-                dataGridView1.DefaultCellStyle.ForeColor = Color.White;
-                dataGridView1.DefaultCellStyle.BackColor = Color.Black;
-                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
-                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
-                dataGridView1.EnableHeadersVisualStyles = false;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 14, FontStyle.Bold);
-                this.dataGridView1.AdvancedCellBorderStyle.Left = DataGridViewAdvancedCellBorderStyle.None;
-                this.dataGridView1.AdvancedCellBorderStyle.Right = DataGridViewAdvancedCellBorderStyle.None;
-                this.dataGridView1.AdvancedCellBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-                this.dataGridView1.AdvancedCellBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None;
-
-                dataGridView1.DataSource = x;
-                DataGridViewColumn column = dataGridView1.Columns[0];
-                column.Width = 580;
+                string profileImagePath = "D://DoAn//user_profile_images//" + currentUserName + ".jpg"; 
+                current_user_image.Image = GetCopyImage(profileImagePath);
+                current_user_image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
+        }
+
+        void LoadAllBookInfo()
+        {
+            tlpMyBook.Controls.Clear();
+            tlpMyBook.RowStyles.Clear();
+            tlpMyBook.RowCount = 0;
+
+            string allBooksPath = "D:\\DoAn\\user_all_story\\" + userName + ".txt";
+            StreamReader allBooks = new StreamReader(allBooksPath);
+
+            string book;
+            while((book = allBooks.ReadLine()) != null)
+            {
+                string bookPath = "D:\\DoAn\\Story\\" + book + "\\";
+                StreamReader countInfo = new StreamReader(bookPath + "view_like_chapter_count.txt");
+
+                string[] stringSeparators = new string[] { "\r\n" };
+                string[] counts = countInfo.ReadToEnd().Split(stringSeparators, StringSplitOptions.None);
+                int view = int.Parse(counts[0]), like = int.Parse(counts[1]), chapter = int.Parse(counts[2]);
+                countInfo.Close();
+
+
+                StreamReader uploadInfo = new StreamReader(bookPath + "upload_status.txt");
+                string[] uploads = uploadInfo.ReadToEnd().Split(stringSeparators, StringSplitOptions.None);
+                uploadInfo.Close();
+
+                int draftCount = 0, uploadCount = 0;
+                foreach (string upload in uploads)
+                {
+                    if (upload == "true") uploadCount += 1;
+                    else if (upload == "false") draftCount += 1;
+                }
+                string imagePath = bookPath + book + ".png";
+
+                string update = "";
+                if (File.Exists(bookPath + "\\last_update.txt"))
+                {
+                    string[] updateInfo = File.ReadAllLines(bookPath + "\\last_update.txt");
+                    update = updateInfo[0];
+                }
+                else
+                {
+                    File.Create(bookPath + "\\last_update.txt").Close();
+                    StreamWriter sr = new StreamWriter(bookPath + "\\last_update.txt");
+                    update = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+                    sr.WriteLine(update);
+                    sr.Close();
+                }    
+                
+
+                UserControl_MyBook newBookControl = new UserControl_MyBook(imagePath, book, draftCount, uploadCount, update, view, like, chapter);
+                newBookControl.TitleClick += new EventHandler(BookClick);
+                newBookControl.ContinueClick += new EventHandler(ContinueClick);
+                newBookControl.DeleteClick += new EventHandler(DeleteClick);
+
+                tlpMyBook.RowStyles.Add(new RowStyle(SizeType.Absolute, 200));
+                tlpMyBook.Controls.Add(newBookControl, 0, tlpMyBook.RowCount);
+                tlpMyBook.RowCount += 1;
+
+            }
+            allBooks.Close();
 
         }
 
-        private void load_cover_image_Click(object sender, EventArgs e)
+        private Image GetCopyImage(string path)
+        {
+            Image img = Image.FromFile(path);
+            Bitmap bm = new Bitmap(img);
+            img.Dispose();
+            return bm;
+        }
+
+        void ShowBookInfoPanel(bool showPanel, string bookTitle = "", bool isContinue = false)
+        { 
+            if (showPanel)
+            {              
+                if (bookTitle == "")
+                {
+                    lblBook.Text = "Truyện chưa có tiêu đề";
+                    btnCreateBook.Text = "Tạo truyện";
+
+                    picCoverImage.BackgroundImage = GetCopyImage("D:\\DoAn\\Image\\cover_default.jpg");
+                    
+                    tbTitle.Clear(); tbTitle.ReadOnly = false;
+                    tbAuthor.Text = authorName;
+                    tbDescription.Clear();
+                    tbGenre.Clear();
+                    cbbAge.Text = "Độ tuổi độc giả chính";
+                    ckbAdult.Checked = false;
+
+                    tsmiBookInfo.Visible = true;
+                    tsmiBookInfo.ForeColor = Color.YellowGreen;
+                    tsmiChapters.Visible = false;
+                    pnlChapters.Visible = false;
+                }
+                else
+                {
+                    lblBook.Text = bookTitle; currentTitle = bookTitle;
+                    btnCreateBook.Text = "Lưu";
+
+                    string bookPath = "D:\\DoAn\\Story\\" + bookTitle;
+                    picCoverImage.BackgroundImage = GetCopyImage(bookPath + "\\" + bookTitle + ".png");
+
+
+                    // load thông tin truyện
+                    string[] bookInfo = File.ReadAllLines(bookPath + "\\0.txt");
+                    tbTitle.Text = bookInfo[0]; //tbTitle.ReadOnly = true;
+                    tbAuthor.Text = bookInfo[1];
+                    tbDescription.Text = bookInfo[3];
+                    tbGenre.Text = bookInfo[4];
+                    cbbAge.Text = bookInfo[5];
+                    if (bookInfo[6] == "Không") ckbAdult.Checked = true;
+                    else ckbAdult.Checked = false;
+
+                    // load các chaptes
+                    tsmiChapters.Visible = true;
+                    string[] status = File.ReadAllLines(bookPath + "\\upload_status.txt");
+                    for (int i = 0; i < status.Length; i++)
+                        if (status[i] == "true") status[i] = "đã đăng tải";
+                        else status[i] = "bản thảo";
+
+                    string[] chapters = new string[bookInfo.Length - 7];
+                    for (int i = 0; i < chapters.Length; i++)
+                        chapters[i] = bookInfo[i + 7];
+
+                    dgvChapters.Rows.Clear();
+                    for (int i = 0; i < chapters.Length; i++)
+                        dgvChapters.Rows.Add(chapters[i], status[i]);
+
+                    if (isContinue)
+                    {
+                        tsmiBookInfo.ForeColor = Color.White;
+                        tsmiChapters.ForeColor = Color.GreenYellow;
+                        pnlChapters.Visible = true;
+                    }
+                    else
+                    {
+                        tsmiBookInfo.ForeColor = Color.GreenYellow;
+                        tsmiChapters.ForeColor = Color.White;
+                        pnlChapters.Visible = false;
+                    }
+                }
+                pnlBookInfo.Visible = true;
+            }
+            else
+                pnlBookInfo.Visible = false;   
+        }
+
+        void ShowWritePanel(bool showPanel, string bookTitle = "", string chapterTitle = "", int chapterIndex = 0)
+        {
+            if (showPanel)
+            {
+                lblBookName.Text = bookTitle;
+                string bookPath = "D:\\DoAn\\Story\\" + bookTitle;
+                if (chapterTitle == "")
+                {                
+                    int chapterCount = int.Parse(File.ReadAllLines(bookPath + "\\view_like_chapter_count.txt")[2]);
+                    lblChapterIndex.Text = (chapterCount + 1).ToString();
+                    lblChapterName.Text = "Chưa có tiêu đề chương " + (chapterCount + 1).ToString();
+                    tbChapterTitle.Text = "Chưa có tiêu đề chương " + (chapterCount + 1).ToString();
+                    rtbStory.Text = "Viết truyện ở đây...";
+                    rtbStory.Select();
+                }
+                else
+                {         
+                    lblChapterName.Text = chapterTitle;
+                    tbChapterTitle.Text = chapterTitle;
+                    string chapterPath = bookPath + "\\" + chapterIndex.ToString() + ".txt";
+                    lblChapterIndex.Text = chapterIndex.ToString();
+                    rtbStory.Text = File.ReadAllText(chapterPath);
+                }
+                ShowBookInfoPanel(false);  
+                pnlWrite.Visible = true;
+            }
+            else pnlWrite.Visible = false;
+        }
+
+        protected void BookClick(object sender, EventArgs e)
+        {
+            UserControl_MyBook clickedBook = (UserControl_MyBook)sender;
+            ShowBookInfoPanel(true, clickedBook.bookTitle);
+        }
+
+        protected void ContinueClick(object sender, EventArgs e)
+        {
+            UserControl_MyBook clickedBook = (UserControl_MyBook)sender;
+            ShowBookInfoPanel(true, clickedBook.bookTitle, true);
+        }
+       
+        protected void DeleteClick(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Bạn có muốn xóa truyện?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                UserControl_MyBook clickedBook = (UserControl_MyBook)sender;
+                string deleteBook = clickedBook.bookTitle;
+                string userAllBookPath = "D://DoAn//user_all_story//" + userName + ".txt";
+                string userAllBook = File.ReadAllText(userAllBookPath);
+                userAllBook = userAllBook.Replace(deleteBook + "\r\n", "");
+                File.WriteAllText(userAllBookPath, userAllBook);
+
+                string deleteDir = "D://DoAn//Story//" + deleteBook;
+                picCoverImage.BackgroundImage.Dispose();
+                if (Directory.Exists(deleteDir)) Directory.Delete(deleteDir, true);
+
+                string path1 = "D://DoAn//user_profile_images//" + userName + ".txt";
+                string[] y = File.ReadAllLines(path1);
+                //y[1] = (Int32.Parse(y[1]) + 1).ToString();
+                string path2 = "D://DoAn//user_all_story//" + userName + ".txt";
+                y[1] = File.ReadAllLines(path2).Length.ToString();
+                File.WriteAllLines(path1, y);
+            }    
+            
+
+            LoadAllBookInfo();
+        }
+
+        private void btnNewBook_Click(object sender, EventArgs e)
+        {
+            ShowBookInfoPanel(true, "");          
+        }
+
+        private void btnBackToMyBook_Click(object sender, EventArgs e)
+        {
+            LoadAllBookInfo();
+            ShowBookInfoPanel(false);
+        }
+
+        string currentTitle = "";
+        private void btnCreateBook_Click(object sender, EventArgs e)
+        {
+            //Lưu các thông tin trang bìa đã nhập
+            //Điều kiện: tiêu đề, thể loại, độ tuổi độc giả không trống
+            if (tbTitle.Text.ToString() == "")
+            {
+                MessageBox.Show("Tiêu đề trống", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
+            }
+            else if (tbAuthor.Text.ToString() == "")
+            {
+                MessageBox.Show("Tên tác giả trống", "Vui lòng nhập tên tác giả", MessageBoxButtons.OK);
+            }
+            else if (tbGenre.Text.ToString() == "")
+            {
+                MessageBox.Show("Thể loại trống", "Vui lòng chọn thể loại", MessageBoxButtons.OK);
+            }
+            else if (cbbAge.Text == "Độ tuổi độc giả chính")
+            {
+                MessageBox.Show("Độ tuổi trống", "Vui lòng chọn độ tuổi độc giả", MessageBoxButtons.OK);
+            }
+            else
+            {
+                // Nếu thuyện đã tạo rồi
+                if (btnCreateBook.Text == "Lưu")
+                {
+                    // Nếu đổi tên truyện
+                    if (currentTitle != tbTitle.Text)
+                    {
+                            
+                        string oldBookPath = "D://DoAn//Story//" + currentTitle;
+                        string newBookPath = "D://DoAn//Story//" + tbTitle.Text;
+                        if (Directory.Exists(newBookPath))
+                        {
+                            MessageBox.Show("Tiêu đề đã tồn tại", "Vui lòng nhập tiêu đề khác cho truyện", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            // chuyển qua thư mục truyện mới
+                            Directory.CreateDirectory("D://DoAn//Story//" + tbTitle.Text);
+                            string[] bookFiles = Directory.GetFiles(oldBookPath);
+                            foreach (string file in bookFiles)
+                            {
+                                string fileName = new FileInfo(file).Name;
+                                File.Move(oldBookPath + "//" + fileName, newBookPath + "//" + fileName);
+                            }
+
+                            // xóa thư mục truyện cũ
+                            if (Directory.Exists(oldBookPath)) Directory.Delete(oldBookPath, true);
+                        }
+
+                        // đổi tên truyện cũ thành mới trong thông tin truyện của user
+                        string userStoriesPath = "D://DoAn//user_all_story//" + userName + ".txt";
+                        string[] userStoriesInfo = File.ReadAllLines(userStoriesPath);
+                        for (int i=0; i< userStoriesInfo.Length; i++)
+                        {
+                            if (userStoriesInfo[i] == currentTitle)
+                                userStoriesInfo[i] = tbTitle.Text;
+                        }
+                        File.WriteAllLines(userStoriesPath, userStoriesInfo);
+                        
+                    }    
+
+                    // lưu cac thông tin trên bìa truyện xuống file 0.txt
+                    string bookPath = "D://DoAn//Story//" + tbTitle.Text;
+                    string[] bookInfo = File.ReadAllLines(bookPath + "//0.txt");
+
+                    bookInfo[0] = tbTitle.Text;
+                    bookInfo[3] = tbDescription.Text;
+                    bookInfo[4] = tbGenre.Text;
+                    bookInfo[5] = cbbAge.Text;
+                    bookInfo[6] = ckbAdult.Checked ? "Không" : "Có";
+                    File.WriteAllLines(bookPath + "//0.txt", bookInfo);
+
+                    // lưu thời gian cập nhật truyện mới nhất
+                    if (!File.Exists(bookPath + "//last_update.txt"))
+                        File.Create(bookPath + "//last_update.txt").Close();
+                    StreamWriter sr = new StreamWriter(bookPath + "//last_update.txt");
+                    sr.WriteLine(DateTime.Now.ToString("dd/MM/yyyy hh:mm tt"));
+                    sr.Close();
+               
+
+                    //xóa ảnh bìa (cùng tên với ảnh bìa mới/nếu có) và lưu ảnh bìa mới
+                    string path = bookPath + "//" + tbTitle.Text.ToString() + ".png";
+                    if (File.Exists(path)) File.Delete(path);
+                    picCoverImage.BackgroundImage.Save(bookPath + "//" + tbTitle.Text.ToString() + ".png");
+
+                    lblBook.Text = tbTitle.Text;
+                    MessageBox.Show("Bạn đã lưu thông tin bìa truyện thành công", "Thông báo", MessageBoxButtons.OK);
+                }    
+                else
+                {
+                    //Không có vấn đề => lưu thông tin truyện đã nhập
+                    string storyPath = "D://DoAn//Story//" + tbTitle.Text.ToString();
+                    //Tạo folder truyện
+                    if (Directory.Exists(storyPath))
+                    {
+                        MessageBox.Show("Tiêu đề đã tồn tại", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        DirectoryInfo di = Directory.CreateDirectory(storyPath);
+                        string[] x = { "0", "0", "0" };
+                        File.WriteAllLines(storyPath + "//view_like_chapter_count.txt", x);
+
+                        File.Create(storyPath + "//upload_status.txt").Close();
+
+                        //xóa ảnh bìa (cùng tên với ảnh bìa mới/nếu có) và lưu ảnh bìa mới
+                        string path = storyPath + "//" + tbTitle.Text.ToString() + ".png";
+                        if (File.Exists(path)) File.Delete(path);
+                        picCoverImage.BackgroundImage.Save(storyPath + "//" + tbTitle.Text.ToString() + ".png");
+
+                        //Nếu mô tả trống, cho nó là 1 hàng trống
+                        //if (tbDescription.Text.ToString() == "") tbDescription.Text = "\n";
+
+
+                        //Lưu các thông tin khác
+                        string[] info =
+                        {
+                            tbTitle.Text,
+                            tbAuthor.Text,
+                            userName,
+                            tbDescription.Text,
+                            tbGenre.Text,
+                            cbbAge.Text,
+                            ckbAdult.Text
+                        };
+
+                        string infoPath = storyPath + "//0.txt";
+                        File.WriteAllLines(infoPath, info);
+
+                        //Thêm tên tác phẩm vào nơi tổng hợp tất cả các tác phẩm của tác giả
+                        path = "D://DoAn//user_all_story//" + userName + ".txt";
+                        string[] all_story = File.ReadAllLines(path);
+                        string[] new_story = { tbTitle.Text };
+                        File.WriteAllLines(path, new_story);
+                        File.AppendAllLines(path, all_story);
+
+                        //Cộng số lượng tác phẩm của tác giả lên 1
+                        string path1 = "D://DoAn//user_profile_images//" + userName + ".txt";
+                        string[] y = File.ReadAllLines(path1);
+                        //y[1] = (Int32.Parse(y[1]) + 1).ToString();
+                        string path2 = "D://DoAn//user_all_story//" + userName + ".txt";
+                        y[1] = File.ReadAllLines(path2).Length.ToString();
+                        File.WriteAllLines(path1, y);
+
+
+                        //Chuyển sang viết truyện (tập 1)
+                        ShowBookInfoPanel(false);
+                        ShowWritePanel(true, tbTitle.Text, "");
+                    }    
+
+                }
+
+            }
+        }
+
+        private void tsmiBookInfo_Click(object sender, EventArgs e)
+        {
+            pnlChapters.Visible = false;
+            tsmiBookInfo.ForeColor = Color.GreenYellow;
+            tsmiChapters.ForeColor = Color.White;
+        }
+        private void tsmiChapters_Click(object sender, EventArgs e)
+        {
+            pnlChapters.Visible = true;
+            tsmiChapters.ForeColor = Color.GreenYellow;
+            tsmiBookInfo.ForeColor = Color.White;
+
+
+        }
+
+        private void btnLoadCoverImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileOpen = new OpenFileDialog();
             fileOpen.Title = "Open Image file";
             fileOpen.Filter = "JPG Files (*.jpg)| *.jpg|PNG Files (*.png)| *.png";
             if (fileOpen.ShowDialog() == DialogResult.OK)
             {
-                cover_image.Image = Image.FromFile(fileOpen.FileName);
-                cover_image.SizeMode = PictureBoxSizeMode.StretchImage;
+                picCoverImage.BackgroundImage = GetCopyImage(fileOpen.FileName);
+                //picCoverImage.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             fileOpen.Dispose();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+
+        private void dgvChapters_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Nếu checked thì text là Có, bỏ check thì text thành không
-            string txt = checkBox1.Text;
-            if (txt.ToLower() == "không")
+            int row = e.RowIndex;
+            if (row < 0) return;
+            string bookTitle = tbTitle.Text;
+            string chapterTitle = dgvChapters.Rows[row].Cells[0].Value.ToString();
+            //int chapterIndex = int.Parse(chapterTitle.Split('.')[0]);
+            ShowWritePanel(true, bookTitle, chapterTitle, row + 1);
+        }
+        private void btnNewChapter_Click(object sender, EventArgs e)
+        {
+            string bookTitle = tbTitle.Text;
+            string bookPath = "D:\\DoAn\\Story\\" + bookTitle;
+
+            //string[] viewLikeChapterCount = File.ReadAllLines(bookPath + "\\view_like_chapter_count.txt");
+            //int newChapterIndex = int.Parse(viewLikeChapterCount[2]) + 1;
+            //viewLikeChapterCount[2] = newChapterIndex.ToString();
+            //File.WriteAllLines(bookPath + "\\view_like_chapter_count.txt", viewLikeChapterCount);
+
+            ShowWritePanel(true, bookTitle, "");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string bookPath = "D:\\DoAn\\Story\\" + lblBookName.Text;
+            string chapterPath = bookPath + "\\" + lblChapterIndex.Text + ".txt";
+
+            // lưu thông tin truyện trong chapter 0
+            string bookInfoPath = bookPath + "\\0.txt";
+            string[] bookInfo = File.ReadAllLines(bookInfoPath);
+            int chapterIndex = int.Parse(lblChapterIndex.Text);
+            if (chapterIndex <= bookInfo.Length - 7) // nếu chapter đã có
             {
-                checkBox1.Text = "Có";
+                bookInfo[chapterIndex + 7 -1] = tbChapterTitle.Text;
+                File.WriteAllLines(bookInfoPath, bookInfo);
+
+                File.WriteAllText(chapterPath, String.Empty);
+                File.WriteAllText(chapterPath, rtbStory.Text);
+            }         
+            else // nếu là chapter mới
+            {
+                if (!File.Exists(chapterPath)) File.Create(chapterPath).Close();
+                File.WriteAllText(chapterPath, String.Empty);
+                File.WriteAllText(chapterPath, rtbStory.Text);
+
+                using (StreamWriter sr = new StreamWriter(bookInfoPath, true))
+                {
+                    sr.WriteLine(tbChapterTitle.Text);
+                    sr.Close();
+                }
+
+                // thêm trạng thái upload là bản thảo
+                string uploadStatusPath = bookPath + "\\upload_status.txt";
+                using (StreamWriter sr = new StreamWriter(uploadStatusPath, true))
+                {
+                    sr.WriteLine("false");
+                    sr.Close();
+                }
+
+                // tăng lượng chapter lên 1
+                string[] viewLikeChapterCount = File.ReadAllLines(bookPath + "\\view_like_chapter_count.txt");
+                int newChapterIndex = int.Parse(viewLikeChapterCount[2]) + 1;
+                viewLikeChapterCount[2] = newChapterIndex.ToString();
+                File.WriteAllLines(bookPath + "\\view_like_chapter_count.txt", viewLikeChapterCount);
+            }
+
+            // lưu thời gian cập nhật truyện mới nhất
+            if (!File.Exists(bookPath + "//last_update.txt"))
+                File.Create(bookPath + "//last_update.txt").Close();
+            using (StreamWriter sr = new StreamWriter(bookPath + "//last_update.txt"))
+            {
+                sr.WriteLine(DateTime.Now.ToString("dd/MM/yyyy hh:mm tt"));
+                sr.Close();
+            }
+            lblChapterName.Text = tbChapterTitle.Text;
+            MessageBox.Show("Bạn đã lưu chương thành công.", "Thông báo", MessageBoxButtons.OK);
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            string bookPath = "D:\\DoAn\\Story\\" + lblBookName.Text;
+            string uploadPath = bookPath + "\\upload_status.txt";
+
+            string[] uploadInfo = File.ReadAllLines(uploadPath);
+            int chapterIndex = int.Parse(lblChapterIndex.Text);
+
+
+            if (chapterIndex - 1 < uploadInfo.Length)
+            {
+                uploadInfo[chapterIndex - 1] = "true";
+                MessageBox.Show("Bạn đã đăng tải chương thành công.", "Thông báo", MessageBoxButtons.OK);
             }
             else
             {
-                checkBox1.Text = "Không";
+                MessageBox.Show("Bạn phải lưu bản thảo rồi mới đăng tải!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+            File.WriteAllLines(uploadPath, uploadInfo);
 
-        private void create_ok_Click(object sender, EventArgs e)
-        {
-            //Lưu các thông tin trang bìa đã nhập
-            //Điều kiện: tiêu đề, thể loại, độ tuổi độc giả không trống
-            if (textBox1.Text.ToString() == "")
+            // lưu thời gian cập nhật truyện mới nhất
+            if (!File.Exists(bookPath + "//last_update.txt"))
+                File.Create(bookPath + "//last_update.txt").Close();
+            using (StreamWriter sr = new StreamWriter(bookPath + "//last_update.txt"))
             {
-                MessageBox.Show("Tiêu đề trống", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
+                sr.WriteLine(DateTime.Now.ToString("dd/MM/yyyy hh:mm tt"));
+                sr.Close();
             }
-            else if (textBox3.Text.ToString() == "")
-            {
-                MessageBox.Show("Thể loại trống", "Vui lòng chọn thể loại", MessageBoxButtons.OK);
-            }
-            else if(comboBox1.Text== "Độ tuổi độc giả chính")
-            {
-                MessageBox.Show("Độ tuổi trống", "Vui lòng chọn độ tuổi độc giả", MessageBoxButtons.OK);
-            }
-            else
-            {
-                //Không có vấn đề => lưu thông tin truyện đã nhập
-                string story_path = "D://DoAn//Story//"+ textBox1.Text.ToString();
-                //Tạo folder truyện
-                if (Directory.Exists(story_path))
-                {
-                    MessageBox.Show("Tiêu đề đã tồn tại", "Vui lòng nhập tiêu đề", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    DirectoryInfo di = Directory.CreateDirectory(story_path);
-                    //tạo file view_like_chapter_count
-                    string[] x = { "0", "0", "1" };
-                    //Số tập là 1 vì khi tạo truyện thành công => tự động tạo bản thảo của tập 1
-                    File.WriteAllLines(story_path + "//view_like_chapter_count.txt", x);
-
-                    //xóa ảnh bìa (cùng tên với ảnh bìa mới/nếu có)
-                    string path = story_path + "//" + textBox1.Text.ToString() + ".png";
-                    if (File.Exists(path))
-                    {
-                        File.Delete(path);
-                    }
-                    //lưu ảnh bìa mới
-                    cover_image.Image.Save(story_path+"//"+textBox1.Text.ToString()+".png");
-
-                    //Nếu mô tả trống, cho nó là 1 hàng trống
-                    if (textBox2.Text.ToString() == "")
-                    {
-                        textBox2.Text = "\n";
-                    }
-
-                    //Lưu các thông tin khác
-                    string[] info =
-                    {
-                        textBox1.Text.ToString(),
-                        current_user_name_,
-                        current_user_uname_,
-                        textBox2.Text.ToString(),
-                        textBox3.Text.ToString(),
-                        comboBox1.Text.ToString(),
-                        checkBox1.Text.ToString()
-                    };
-                    string info_path = story_path + "//0.txt";
-                    File.WriteAllLines(info_path, info);
-                    //Cộng số lượng tác phẩm của tác giả lên 1
-                    path = "D://DoAn//user_profile_images//" + current_user_uname_ + ".txt";
-                    string[] y = File.ReadAllLines(path);
-                    y[1] = (Int32.Parse(y[1]) + 1).ToString();
-                    File.WriteAllLines(path, y);
-                    //Thêm tên tác phẩm vào nơi tổng hợp tất cả các tác phẩm của tác giả
-                    path = "D://DoAn//user_all_story//" + current_user_uname_ + ".txt";
-                    using (StreamWriter sw = File.AppendText(path))
-                    {
-                        sw.WriteLine(textBox1.Text.ToString());
-                    }
-
-
-                    //Chuyển sang viết truyện (tập 1)
-
-                }
-
-            }
-            
 
         }
 
-        private void but_back_home_Click(object sender, EventArgs e)
+        private void picHideWritePanel_Click(object sender, EventArgs e)
         {
-            var x = new Form1(current_user_uname_);
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                x.WindowState = FormWindowState.Maximized;
-            }
-            x.Show();
+            ShowBookInfoPanel(true, tbTitle.Text, true);
+            ShowWritePanel(false);
+        }
+
+        private void picHome_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
-        private void cácChươngToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnDeleteChapter_Click(object sender, EventArgs e)
         {
-            dataGridView1.Visible = true;
-            cácChươngToolStripMenuItem.BackColor = Color.Black;
-            tTTToolStripMenuItem.BackColor = Color.FromArgb(200, Color.Black);
-        }
+            int rowIndex = dgvChapters.CurrentCell.RowIndex;
+            if (rowIndex < 0) return;
+            string chapterName = dgvChapters.Rows[rowIndex].Cells[0].Value.ToString();
 
-        private void tTTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dataGridView1.Visible = false;
-            cácChươngToolStripMenuItem.BackColor = Color.FromArgb(200, Color.Black);
-            tTTToolStripMenuItem.BackColor = Color.Black;
+            string bookInfoPath = "D:\\DoAn\\Story\\" + tbTitle.Text + "\\0.txt";
+            string[] bookInfo = File.ReadAllLines(bookInfoPath);
+            File.WriteAllText(bookInfoPath, String.Empty);
+
+            StreamWriter sr = new StreamWriter(bookInfoPath, true);
+            int chapterIndex = 0, lastChapterIndex = bookInfo.Length - 7;
+            for (int i = 0; i < bookInfo.Length; i++)
+            {
+                if (bookInfo[i] != chapterName)
+                {
+                    sr.WriteLine(bookInfo[i]);
+                }
+                else chapterIndex = i - 6;
+            }
+            sr.Close();
+            if (chapterIndex <= 0) return; // nếu không có chương nào bị xóa thì kết thúc          
+
+            // xóa trạng thái upload của chương cần xóa
+            string uploadInfoPath = "D:\\DoAn\\Story\\" + tbTitle.Text + "\\upload_status.txt";
+            string[] uploadInfo = File.ReadAllLines(uploadInfoPath);
+
+            File.WriteAllText(uploadInfoPath, String.Empty);
+            sr = new StreamWriter(uploadInfoPath, true);
+            for(int i=0; i< uploadInfo.Length; i++)
+                if (i != chapterIndex - 1)
+                    sr.WriteLine(uploadInfo[i]);
+            sr.Close();
+
+            string bookPath = "D:\\DoAn\\Story\\" + tbTitle.Text + "\\";
+
+            if (File.Exists(bookPath + chapterIndex.ToString() + ".txt")) File.Delete(bookPath + chapterIndex.ToString() + ".txt");
+            for (int i =chapterIndex +1; i<= lastChapterIndex; i++)
+            {
+                File.Move(bookPath + i.ToString() + ".txt", bookPath + (i - 1).ToString() + ".txt");
+            }
+
+            ShowBookInfoPanel(true, tbTitle.Text, true);
+
+            // giảm số lượng chương của truyện xuống 1
+            string[] viewLikeChapterCount = File.ReadAllLines(bookPath + "\\view_like_chapter_count.txt");
+            int newChapterIndex = int.Parse(viewLikeChapterCount[2]) - 1;
+            viewLikeChapterCount[2] = newChapterIndex.ToString();
+            File.WriteAllLines(bookPath + "\\view_like_chapter_count.txt", viewLikeChapterCount);
+
         }
     }
 }

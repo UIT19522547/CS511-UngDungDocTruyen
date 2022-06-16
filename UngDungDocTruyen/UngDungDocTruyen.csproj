@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormHome.Designer.cs">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginSignup.cs">
       <SubType>Form</SubType>
@@ -78,6 +78,12 @@
     <Compile Include="Signin_profile.Designer.cs">
       <DependentUpon>Signin_profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_MyBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_MyBook.Designer.cs">
+      <DependentUpon>UserControl_MyBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_Story_on_Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,8 +96,8 @@
     <Compile Include="Writing.Designer.cs">
       <DependentUpon>Writing.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormHome.resx">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginSignup.resx">
       <DependentUpon>LoginSignup.cs</DependentUpon>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Signin_profile.resx">
       <DependentUpon>Signin_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_MyBook.resx">
+      <DependentUpon>UserControl_MyBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_Story_on_Home.resx">
       <DependentUpon>UserControl_Story_on_Home.cs</DependentUpon>

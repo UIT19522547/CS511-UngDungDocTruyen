@@ -270,13 +270,13 @@ namespace UngDungDocTruyen
             }
             else
             {
-                Writing y = new Writing(story_info[0],story_info[1], current_user_uname);
+                /*Writing y = new Writing(story_info[0],story_info[1], current_user_uname);
                 if (this.WindowState == FormWindowState.Maximized)
                 {
                     y.WindowState = FormWindowState.Maximized;
                 }
                 y.Show();
-                this.Close();
+                this.Close();*/
             }
             
         }
@@ -391,7 +391,7 @@ namespace UngDungDocTruyen
             //chuyển đến form trang cá nhân
             string path = "D://DoAn//user_profile_images//" + current_user_uname + ".txt";
             string current_user_name = File.ReadAllLines(path)[0];
-            var x = new profile_page(current_user_name, current_user_uname, true);
+            var x = new profile_page(current_user_uname, current_user_uname, true);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -402,7 +402,7 @@ namespace UngDungDocTruyen
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var x = new Form1("");
+            var x = new FormHome("");
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -413,7 +413,7 @@ namespace UngDungDocTruyen
 
         private void pic_back_home_Click(object sender, EventArgs e)
         {
-            var x = new Form1(current_user_uname);
+            var x = new FormHome(current_user_uname);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;

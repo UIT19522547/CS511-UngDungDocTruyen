@@ -22,7 +22,7 @@ namespace UngDungDocTruyen
             num_likes.Text = like_count;
             num_chapters.Text = num_of_chapters;
             story_summary.Text = sum;
-            pictureBox1.Load(link_anh_bia);
+            pictureBox1.Image = GetCopyImage(link_anh_bia);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         public string story_name_
@@ -34,6 +34,15 @@ namespace UngDungDocTruyen
         private void label4_Click(object sender, EventArgs e)
         {
             InvokeOnClick(this, new EventArgs());
+        }
+
+        private Image GetCopyImage(string path)
+        {
+            Image img = Image.FromFile(path);
+            Bitmap bm = new Bitmap(img);
+            img.Dispose();
+            return bm;
+
         }
     }
 }
