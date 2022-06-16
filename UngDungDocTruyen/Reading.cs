@@ -14,12 +14,18 @@ namespace UngDungDocTruyen
     public partial class Reading : Form
     {
         public Form RefToHome { get; set; }
-        string current_user_uname, au_uname;
+        string current_user_uname, au_uname,current_story_name;
         public Reading(string story_name,string author_user_name,string current_user_name)
         {
             InitializeComponent();
-            pnlReading.Visible = false;
 
+            dgvBookmark.Columns.Add("Chapter", "Tên chương");
+            dgvBookmark.Columns.Add("Time", "Thời gian");
+            dgvBookmark.Columns["Chapter"].Width = 250;
+            dgvBookmark.Columns["Time"].Width = 175;
+            pnlBookmark.Visible = false;
+
+            pnlReading.Visible = false;
             current_user_uname = current_user_name;
             au_uname = author_user_name;
             dataGridView1.Visible = false;
@@ -37,6 +43,7 @@ namespace UngDungDocTruyen
             string[] story_info = File.ReadAllLines(story_info_folder_link);
             string[] story_info2 = File.ReadAllLines(story_view_like_chapter_link);
 
+            current_story_name = story_info[0];
             au_name.Text = story_info[1];
             au_username.Text = story_info[2];
             num_views.Text = story_info2[0];
@@ -47,6 +54,20 @@ namespace UngDungDocTruyen
             genre.Text = story_info[4];
             rating.Text = story_info[5];
             yeu_to_truong_thanh.Text = story_info[6];
+
+            // số chương đã upload
+            string[] uploadStatus = File.ReadAllLines(story_folder_link + "//upload_status.txt");
+            int uploadCount = 0;
+            foreach (string status in uploadStatus)
+            {
+                if (status == "true")
+                {
+                    uploadCount += 1;
+                }
+            }
+            num_chapters.Text = uploadCount.ToString();
+
+
 
             string ten_dang_nhap_tac_gia = story_info[2];
             string profile_image_link = user_profile_folder_link + "//" + ten_dang_nhap_tac_gia + ".jpg";
@@ -124,8 +145,15 @@ namespace UngDungDocTruyen
 
         private void click_chapter(Object sender, DataGridViewCellEventArgs e)
         {
-            //click vào sẽ ra chapter mới
-            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAA");
+            int ind = dataGridView1.CurrentCell.RowIndex;
+            string path = "D://DoAn//Story//" + current_story_name + "//view_like_chapter_count.txt";
+            string[] x = File.ReadAllLines(path);
+            //Tăng số lượt đọc lên 1
+            x[0] = (Int32.Parse(x[0]) + 1).ToString();
+            File.WriteAllLines(path, x);
+
+            //chuyển sang trang đọc chapter
+
         }
 
         private void current_user_image_Click(object sender, EventArgs e)
@@ -135,7 +163,7 @@ namespace UngDungDocTruyen
 
         private void home_Click(object sender, EventArgs e)
         {
-            var x = new Form1(current_user_uname);
+            var x = new FormHome(current_user_uname);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -191,7 +219,7 @@ namespace UngDungDocTruyen
             //chuyển đến form trang cá nhân
             string path = "D://DoAn//user_profile_images//" + current_user_uname + ".txt";
             string current_user_name = File.ReadAllLines(path)[0];
-            var x = new profile_page(current_user_name, current_user_uname, true);
+            var x = new profile_page(current_user_uname, current_user_uname, true);
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -202,7 +230,7 @@ namespace UngDungDocTruyen
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var x = new Form1("");
+            var x = new FormHome("");
             if (this.WindowState == FormWindowState.Maximized)
             {
                 x.WindowState = FormWindowState.Maximized;
@@ -210,7 +238,6 @@ namespace UngDungDocTruyen
             x.Show();
             this.Close();
         }
-
         private Image GetCopyImage(string path)
         {
             using (Image im = Image.FromFile(path))
@@ -220,15 +247,22 @@ namespace UngDungDocTruyen
             }
         }
 
-
         //panel đọc truyện
         string[] chapterStories;
         private void btnRead_Click(object sender, EventArgs e)
         {
             string bookTitle = lblTitle.Text;
             string bookPath = "D:\\DoAn\\Story\\" + bookTitle + "\\";
-            lblBookName.Text = bookTitle;
 
+            //tăng lượt view của truyện lên 1
+            string[] viewLikeChapterInfo = File.ReadAllLines(bookPath + "view_like_chapter_count.txt");
+            viewLikeChapterInfo[0] = (int.Parse(viewLikeChapterInfo[0]) + 1).ToString();
+            File.WriteAllLines(bookPath + "view_like_chapter_count.txt", viewLikeChapterInfo);
+
+
+            // load thông tin truyện vào panel
+
+            lblBookName.Text = bookTitle;
             string[] bookInfo = File.ReadAllLines(bookPath + "0.txt");
             cbbChapters.Items.Clear();
             string[] uploadStatus = File.ReadAllLines(bookPath + "upload_status.txt");
@@ -244,26 +278,41 @@ namespace UngDungDocTruyen
             int k = 0, uploadCount = 0;
             for (int i = 0; i < uploadStatus.Length; i++)
             {
-                if (uploadStatus[i] == "true" && i+7 < bookInfo.Length)
+                if (uploadStatus[i] == "true" && i + 7 < bookInfo.Length)
                     cbbChapters.Items.Add(bookInfo[i + 7]);
                 k++; uploadCount++;
             }
 
             chapterStories = new string[uploadCount];
             k = 0;
-            for (int i = 0; i< uploadStatus.Length; i++)
+            for (int i = 0; i < uploadStatus.Length; i++)
             {
-                if (uploadStatus[i] == "true" && k<chapterStories.Length)
+                if (uploadStatus[i] == "true" && k < chapterStories.Length)
                 {
                     chapterStories[k] = File.ReadAllText(bookPath + (i + 1).ToString() + ".txt");
                     k++;
-                }    
-            }    
+                }
+            }
+
             LoadBookData(lblTitle.Text, 0);
         }
+        void LoadBookData(string bookTitle, int chapterIndex)
+        {
+            lblChapterName.Text = cbbChapters.Text;
+            if (chapterIndex >=0 && chapterIndex < chapterStories.Length)
+                rtbStory.Text = chapterStories[chapterIndex];
+            else
+                rtbStory.Text = chapterStories[0];
 
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
+            // load lượt view của truyện
+            string bookTitle = lblTitle.Text;
+            string bookPath = "D:\\DoAn\\Story\\" + bookTitle + "\\";
+            string[] viewLikeChapterInfo = File.ReadAllLines(bookPath + "view_like_chapter_count.txt");
+            num_views.Text = viewLikeChapterInfo[0];
+
             pnlReading.Visible = false;
             cbbChapters.Text = String.Empty;
         }
@@ -276,9 +325,10 @@ namespace UngDungDocTruyen
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            if (cbbChapters.SelectedIndex <= 0) return; 
+            if (cbbChapters.SelectedIndex <= 0) return;
             cbbChapters.SelectedIndex -= 1;
         }
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -286,14 +336,107 @@ namespace UngDungDocTruyen
             cbbChapters.SelectedIndex += 1;
         }
 
-        void LoadBookData(string bookTitle, int chapterIndex)
+        private void btnMark_Click(object sender, EventArgs e)
         {
-            lblChapterName.Text = cbbChapters.Text;
-            if (chapterIndex == 0)
-                rtbStory.Text = chapterStories[0];
+            if (current_user_uname == "") return;
+            string bookmarkPath = "D:\\DoAn\\bookmark\\" + current_user_uname;
+            if (!Directory.Exists(bookmarkPath)) Directory.CreateDirectory(bookmarkPath);
+            string markedChaptersPath = bookmarkPath + "\\" + lblBookName.Text + ".txt";
+            if (!File.Exists(markedChaptersPath)) File.Create(markedChaptersPath).Close();
+
+            string currentChapter = cbbChapters.Text;
+            string[] markedChapetersInfo = File.ReadAllLines(markedChaptersPath);
+            for (int i=0; i<markedChapetersInfo.Length; i++)
+            {
+                string markedChapter = markedChapetersInfo[i].Split(',')[0];
+                if (markedChapter == currentChapter)
+                {
+                    markedChapetersInfo[i] = "-";
+                    break;
+                }  
+            }
+
+            File.WriteAllText(markedChaptersPath, String.Empty);
+            StreamWriter sr = new StreamWriter(markedChaptersPath, true);
+            foreach(string line in markedChapetersInfo)
+            {
+                if (line != "-")
+                    sr.WriteLine(line);              
+            }
+            sr.WriteLine(currentChapter + "," + DateTime.Now.ToString("dd/MM/yyyy hh:mm tt"));
+            sr.Close();
+
+            LoadBookmark();
+        }        
+
+        private void btnBookmark_Click(object sender, EventArgs e)
+        {
+            if (pnlBookmark.Visible) pnlBookmark.Visible = false;
             else
-                rtbStory.Text = chapterStories[cbbChapters.SelectedIndex];
-            
+            {
+                if (current_user_uname != "")
+                {
+                    LoadBookmark();
+                }               
+                pnlBookmark.Visible = true;
+            }
+
+        }      
+
+        void LoadBookmark()
+        {
+            string bookmarkPath = "D:\\DoAn\\bookmark\\" + current_user_uname;
+            if (!Directory.Exists(bookmarkPath)) Directory.CreateDirectory(bookmarkPath);
+            string markedChaptersPath = bookmarkPath + "\\" + lblBookName.Text + ".txt";
+            if (!File.Exists(markedChaptersPath)) File.Create(markedChaptersPath).Close();
+
+            string[] markedChapetersInfo = File.ReadAllLines(markedChaptersPath);
+            dgvBookmark.Rows.Clear();
+            for (int i = markedChapetersInfo.Length - 1; i >= 0; i--)
+            {
+                string[] row = markedChapetersInfo[i].Split(',');
+                dgvBookmark.Rows.Add(row[0], row[1]);
+            }
+        }
+
+        private void Reading_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnContinueRead_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvBookmark.CurrentCell.RowIndex;
+            if (rowIndex < 0) return;
+
+            string chapterName = dgvBookmark.Rows[rowIndex].Cells[0].Value.ToString();
+            lblChapterName.Text = chapterName;
+            cbbChapters.Text = chapterName;
+            LoadBookData(lblBookName.Text, cbbChapters.Items.IndexOf(chapterName));
+        }
+
+        private void btnDeleteBookmark_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvBookmark.CurrentCell.RowIndex;
+            if (rowIndex < 0) return;
+
+            string chapterName = dgvBookmark.Rows[rowIndex].Cells[0].Value.ToString();
+
+            string bookmarkPath = "D:\\DoAn\\bookmark\\" + current_user_uname;
+            if (!Directory.Exists(bookmarkPath)) Directory.CreateDirectory(bookmarkPath);
+            string markedChaptersPath = bookmarkPath + "\\" + lblBookName.Text + ".txt";
+            if (!File.Exists(markedChaptersPath)) File.Create(markedChaptersPath).Close();
+
+            string[] markedChapetersInfo = File.ReadAllLines(markedChaptersPath);
+            File.WriteAllText(markedChaptersPath, String.Empty);
+            StreamWriter sr = new StreamWriter(markedChaptersPath, true);
+            foreach (string line in markedChapetersInfo)
+            {
+                if (line.Split(',')[0] != chapterName)
+                    sr.WriteLine(line);
+            }
+            sr.Close();
+            LoadBookmark();
         }
 
     }

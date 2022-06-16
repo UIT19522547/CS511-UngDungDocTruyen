@@ -521,8 +521,9 @@
             this.Controls.Add(this.panel_tac_pham);
             this.Controls.Add(this.panel_profile);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "profile_page";
-            this.Text = "Signin_profile";
+            this.Text = "Thông tin tài khoản";
             this.panel_profile.ResumeLayout(false);
             this.panel_profile.PerformLayout();
             this.panel_setting.ResumeLayout(false);

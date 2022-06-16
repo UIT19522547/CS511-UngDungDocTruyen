@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormHome.Designer.cs">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginSignup.cs">
       <SubType>Form</SubType>
@@ -58,10 +58,14 @@
     <Compile Include="LoginSignup.Designer.cs">
       <DependentUpon>LoginSignup.cs</DependentUpon>
     </Compile>
+    <Compile Include="profile_following.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="profile_following.Designer.cs">
+      <DependentUpon>profile_following.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< Updated upstream
-=======
     <Compile Include="Reading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,11 +78,11 @@
     <Compile Include="Signin_profile.Designer.cs">
       <DependentUpon>Signin_profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMyBook.cs">
+    <Compile Include="UserControl_MyBook.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMyBook.Designer.cs">
-      <DependentUpon>UserControlMyBook.cs</DependentUpon>
+    <Compile Include="UserControl_MyBook.Designer.cs">
+      <DependentUpon>UserControl_MyBook.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl_Story_on_Home.cs">
       <SubType>UserControl</SubType>
@@ -92,18 +96,14 @@
     <Compile Include="Writing.Designer.cs">
       <DependentUpon>Writing.cs</DependentUpon>
     </Compile>
-    <Compile Include="WritingBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WritingBook.Designer.cs">
-      <DependentUpon>WritingBook.cs</DependentUpon>
-    </Compile>
->>>>>>> Stashed changes
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormHome.resx">
+      <DependentUpon>FormHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginSignup.resx">
       <DependentUpon>LoginSignup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="profile_following.resx">
+      <DependentUpon>profile_following.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,16 +114,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
     <EmbeddedResource Include="Reading.resx">
       <DependentUpon>Reading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Signin_profile.resx">
       <DependentUpon>Signin_profile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMyBook.resx">
-      <DependentUpon>UserControlMyBook.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_MyBook.resx">
+      <DependentUpon>UserControl_MyBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_Story_on_Home.resx">
       <DependentUpon>UserControl_Story_on_Home.cs</DependentUpon>
@@ -131,10 +129,6 @@
     <EmbeddedResource Include="Writing.resx">
       <DependentUpon>Writing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WritingBook.resx">
-      <DependentUpon>WritingBook.cs</DependentUpon>
-    </EmbeddedResource>
->>>>>>> Stashed changes
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,14 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="back.png" />
-    <Content Include="back2.png" />
-    <Content Include="background.jpg" />
-    <Content Include="homeIcon4.png" />
-    <Content Include="jn112_grookey_eevee2.jpg" />
-    <Content Include="search_icon2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
