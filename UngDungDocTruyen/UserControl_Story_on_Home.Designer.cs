@@ -73,9 +73,9 @@
             // 
             this.story_summary.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.story_summary.ForeColor = System.Drawing.Color.Black;
-            this.story_summary.Location = new System.Drawing.Point(243, 153);
+            this.story_summary.Location = new System.Drawing.Point(243, 135);
             this.story_summary.Name = "story_summary";
-            this.story_summary.Size = new System.Drawing.Size(312, 171);
+            this.story_summary.Size = new System.Drawing.Size(312, 189);
             this.story_summary.TabIndex = 2;
             this.story_summary.Text = "Tóm tắt câu chuyện: truyện kể về 7 anh em đại diện cho 7 đại tội sống trong 1 ngô" +
     "i nhà ở thế giới của quỷ";
@@ -89,7 +89,7 @@
             this.panel_view_like_chapters.Controls.Add(this.pictureBox3);
             this.panel_view_like_chapters.Controls.Add(this.num_views);
             this.panel_view_like_chapters.Controls.Add(this.pictureBox2);
-            this.panel_view_like_chapters.Location = new System.Drawing.Point(248, 96);
+            this.panel_view_like_chapters.Location = new System.Drawing.Point(248, 78);
             this.panel_view_like_chapters.Name = "panel_view_like_chapters";
             this.panel_view_like_chapters.Size = new System.Drawing.Size(307, 45);
             this.panel_view_like_chapters.TabIndex = 3;
@@ -158,7 +158,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(252, 51);
+            this.label4.Location = new System.Drawing.Point(244, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 20);
             this.label4.TabIndex = 5;
@@ -167,7 +167,7 @@
             // 
             // author_username
             // 
-            this.author_username.Location = new System.Drawing.Point(322, 51);
+            this.author_username.Location = new System.Drawing.Point(314, 47);
             this.author_username.Name = "author_username";
             this.author_username.Size = new System.Drawing.Size(232, 24);
             this.author_username.TabIndex = 6;
@@ -185,7 +185,7 @@
             this.Controls.Add(this.story_name);
             this.Controls.Add(this.pictureBox1);
             this.Name = "UserControl_Story_on_Home";
-            this.Size = new System.Drawing.Size(557, 340);
+            this.Size = new System.Drawing.Size(566, 340);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_view_like_chapters.ResumeLayout(false);
             this.panel_view_like_chapters.PerformLayout();

@@ -31,6 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(profile_page));
             this.panel_profile = new System.Windows.Forms.Panel();
+            this.panel_setting = new System.Windows.Forms.Panel();
+            this.warning_pass = new System.Windows.Forms.Label();
+            this.warning_username = new System.Windows.Forms.Label();
+            this.warning_name = new System.Windows.Forms.Label();
+            this.save_setting = new System.Windows.Forms.Button();
+            this.textBox_change_pass = new System.Windows.Forms.TextBox();
+            this.textBox_change_uname = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.profile_image2 = new System.Windows.Forms.PictureBox();
             this.pic_back_home = new System.Windows.Forms.PictureBox();
             this.pic_current_uname = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,30 +67,16 @@
             this.contextMenuStrip_profile_image = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trangCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_setting = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.profile_image2 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox_change_uname = new System.Windows.Forms.TextBox();
-            this.textBox_change_pass = new System.Windows.Forms.TextBox();
-            this.save_setting = new System.Windows.Forms.Button();
-            this.warning_name = new System.Windows.Forms.Label();
-            this.warning_username = new System.Windows.Forms.Label();
-            this.warning_pass = new System.Windows.Forms.Label();
             this.panel_profile.SuspendLayout();
+            this.panel_setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profile_image2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_back_home)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_current_uname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_profile_img)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel_tac_pham.SuspendLayout();
             this.contextMenuStrip_profile_image.SuspendLayout();
-            this.panel_setting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profile_image2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_profile
@@ -101,6 +101,166 @@
             this.panel_profile.Name = "panel_profile";
             this.panel_profile.Size = new System.Drawing.Size(1126, 275);
             this.panel_profile.TabIndex = 0;
+            // 
+            // panel_setting
+            // 
+            this.panel_setting.Controls.Add(this.warning_pass);
+            this.panel_setting.Controls.Add(this.warning_username);
+            this.panel_setting.Controls.Add(this.warning_name);
+            this.panel_setting.Controls.Add(this.save_setting);
+            this.panel_setting.Controls.Add(this.textBox_change_pass);
+            this.panel_setting.Controls.Add(this.textBox_change_uname);
+            this.panel_setting.Controls.Add(this.textBox1);
+            this.panel_setting.Controls.Add(this.label9);
+            this.panel_setting.Controls.Add(this.label8);
+            this.panel_setting.Controls.Add(this.label6);
+            this.panel_setting.Controls.Add(this.label5);
+            this.panel_setting.Controls.Add(this.pictureBox1);
+            this.panel_setting.Controls.Add(this.profile_image2);
+            this.panel_setting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_setting.Location = new System.Drawing.Point(0, 0);
+            this.panel_setting.Name = "panel_setting";
+            this.panel_setting.Size = new System.Drawing.Size(1126, 275);
+            this.panel_setting.TabIndex = 12;
+            // 
+            // warning_pass
+            // 
+            this.warning_pass.AutoSize = true;
+            this.warning_pass.BackColor = System.Drawing.Color.Transparent;
+            this.warning_pass.ForeColor = System.Drawing.Color.Red;
+            this.warning_pass.Location = new System.Drawing.Point(871, 252);
+            this.warning_pass.Name = "warning_pass";
+            this.warning_pass.Size = new System.Drawing.Size(60, 20);
+            this.warning_pass.TabIndex = 24;
+            this.warning_pass.Text = "label10";
+            // 
+            // warning_username
+            // 
+            this.warning_username.AutoSize = true;
+            this.warning_username.BackColor = System.Drawing.Color.Transparent;
+            this.warning_username.ForeColor = System.Drawing.Color.Red;
+            this.warning_username.Location = new System.Drawing.Point(871, 172);
+            this.warning_username.Name = "warning_username";
+            this.warning_username.Size = new System.Drawing.Size(60, 20);
+            this.warning_username.TabIndex = 23;
+            this.warning_username.Text = "label10";
+            // 
+            // warning_name
+            // 
+            this.warning_name.AutoSize = true;
+            this.warning_name.BackColor = System.Drawing.Color.Transparent;
+            this.warning_name.ForeColor = System.Drawing.Color.Red;
+            this.warning_name.Location = new System.Drawing.Point(871, 87);
+            this.warning_name.Name = "warning_name";
+            this.warning_name.Size = new System.Drawing.Size(60, 20);
+            this.warning_name.TabIndex = 22;
+            this.warning_name.Text = "label10";
+            // 
+            // save_setting
+            // 
+            this.save_setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save_setting.Location = new System.Drawing.Point(12, 207);
+            this.save_setting.Name = "save_setting";
+            this.save_setting.Size = new System.Drawing.Size(81, 54);
+            this.save_setting.TabIndex = 21;
+            this.save_setting.Text = "Lưu";
+            this.save_setting.UseVisualStyleBackColor = true;
+            this.save_setting.Click += new System.EventHandler(this.save_setting_Click);
+            // 
+            // textBox_change_pass
+            // 
+            this.textBox_change_pass.Location = new System.Drawing.Point(871, 211);
+            this.textBox_change_pass.Name = "textBox_change_pass";
+            this.textBox_change_pass.Size = new System.Drawing.Size(400, 26);
+            this.textBox_change_pass.TabIndex = 20;
+            this.textBox_change_pass.TextChanged += new System.EventHandler(this.textBox_change_pass_TextChanged);
+            // 
+            // textBox_change_uname
+            // 
+            this.textBox_change_uname.Location = new System.Drawing.Point(871, 127);
+            this.textBox_change_uname.Name = "textBox_change_uname";
+            this.textBox_change_uname.Size = new System.Drawing.Size(400, 26);
+            this.textBox_change_uname.TabIndex = 19;
+            this.textBox_change_uname.TextChanged += new System.EventHandler(this.textBox_change_uname_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(871, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(400, 26);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(5, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(363, 29);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Đang thay đổi thông tin cá nhân...";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(683, 207);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 29);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Mật khẩu:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(683, 123);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(181, 29);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Tên đăng nhập:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(683, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(164, 29);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Tên tài khoản:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 59);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // profile_image2
+            // 
+            this.profile_image2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.profile_image2.Location = new System.Drawing.Point(384, 43);
+            this.profile_image2.Name = "profile_image2";
+            this.profile_image2.Size = new System.Drawing.Size(213, 201);
+            this.profile_image2.TabIndex = 12;
+            this.profile_image2.TabStop = false;
+            this.profile_image2.Click += new System.EventHandler(this.profile_image2_Click);
             // 
             // pic_back_home
             // 
@@ -250,6 +410,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.truyệnCủaTôiToolStripMenuItem,
@@ -264,21 +425,21 @@
             // truyệnCủaTôiToolStripMenuItem
             // 
             this.truyệnCủaTôiToolStripMenuItem.Name = "truyệnCủaTôiToolStripMenuItem";
-            this.truyệnCủaTôiToolStripMenuItem.Size = new System.Drawing.Size(178, 36);
+            this.truyệnCủaTôiToolStripMenuItem.Size = new System.Drawing.Size(182, 36);
             this.truyệnCủaTôiToolStripMenuItem.Text = "Truyện của tôi";
             this.truyệnCủaTôiToolStripMenuItem.Click += new System.EventHandler(this.truyệnCủaTôiToolStripMenuItem_Click);
             // 
             // danhSáchĐọcToolStripMenuItem
             // 
             this.danhSáchĐọcToolStripMenuItem.Name = "danhSáchĐọcToolStripMenuItem";
-            this.danhSáchĐọcToolStripMenuItem.Size = new System.Drawing.Size(184, 36);
+            this.danhSáchĐọcToolStripMenuItem.Size = new System.Drawing.Size(188, 36);
             this.danhSáchĐọcToolStripMenuItem.Text = "Danh sách đọc";
             this.danhSáchĐọcToolStripMenuItem.Click += new System.EventHandler(this.danhSáchĐọcToolStripMenuItem_Click);
             // 
             // đangTheoDõiToolStripMenuItem
             // 
             this.đangTheoDõiToolStripMenuItem.Name = "đangTheoDõiToolStripMenuItem";
-            this.đangTheoDõiToolStripMenuItem.Size = new System.Drawing.Size(181, 36);
+            this.đangTheoDõiToolStripMenuItem.Size = new System.Drawing.Size(185, 36);
             this.đangTheoDõiToolStripMenuItem.Text = "Đang theo dõi";
             this.đangTheoDõiToolStripMenuItem.Click += new System.EventHandler(this.đangTheoDõiToolStripMenuItem_Click);
             // 
@@ -333,181 +494,21 @@
             this.trangCáNhânToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.contextMenuStrip_profile_image.Name = "contextMenuStrip_profile_image";
-            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 76);
+            this.contextMenuStrip_profile_image.Size = new System.Drawing.Size(245, 80);
             // 
             // trangCáNhânToolStripMenuItem
             // 
             this.trangCáNhânToolStripMenuItem.Name = "trangCáNhânToolStripMenuItem";
-            this.trangCáNhânToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
+            this.trangCáNhânToolStripMenuItem.Size = new System.Drawing.Size(244, 38);
             this.trangCáNhânToolStripMenuItem.Text = "Trang cá nhân";
             this.trangCáNhânToolStripMenuItem.Click += new System.EventHandler(this.trangCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(244, 36);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(244, 38);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
-            // panel_setting
-            // 
-            this.panel_setting.Controls.Add(this.warning_pass);
-            this.panel_setting.Controls.Add(this.warning_username);
-            this.panel_setting.Controls.Add(this.warning_name);
-            this.panel_setting.Controls.Add(this.save_setting);
-            this.panel_setting.Controls.Add(this.textBox_change_pass);
-            this.panel_setting.Controls.Add(this.textBox_change_uname);
-            this.panel_setting.Controls.Add(this.textBox1);
-            this.panel_setting.Controls.Add(this.label9);
-            this.panel_setting.Controls.Add(this.label8);
-            this.panel_setting.Controls.Add(this.label6);
-            this.panel_setting.Controls.Add(this.label5);
-            this.panel_setting.Controls.Add(this.pictureBox1);
-            this.panel_setting.Controls.Add(this.profile_image2);
-            this.panel_setting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_setting.Location = new System.Drawing.Point(0, 0);
-            this.panel_setting.Name = "panel_setting";
-            this.panel_setting.Size = new System.Drawing.Size(1126, 275);
-            this.panel_setting.TabIndex = 12;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 59);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // profile_image2
-            // 
-            this.profile_image2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.profile_image2.Location = new System.Drawing.Point(384, 43);
-            this.profile_image2.Name = "profile_image2";
-            this.profile_image2.Size = new System.Drawing.Size(213, 201);
-            this.profile_image2.TabIndex = 12;
-            this.profile_image2.TabStop = false;
-            this.profile_image2.Click += new System.EventHandler(this.profile_image2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(683, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 29);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Tên tài khoản:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(683, 123);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(181, 29);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Tên đăng nhập:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(683, 207);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(115, 29);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Mật khẩu:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(5, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(363, 29);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Đang thay đổi thông tin cá nhân...";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(871, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 26);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox_change_uname
-            // 
-            this.textBox_change_uname.Location = new System.Drawing.Point(871, 127);
-            this.textBox_change_uname.Name = "textBox_change_uname";
-            this.textBox_change_uname.Size = new System.Drawing.Size(400, 26);
-            this.textBox_change_uname.TabIndex = 19;
-            this.textBox_change_uname.TextChanged += new System.EventHandler(this.textBox_change_uname_TextChanged);
-            // 
-            // textBox_change_pass
-            // 
-            this.textBox_change_pass.Location = new System.Drawing.Point(871, 211);
-            this.textBox_change_pass.Name = "textBox_change_pass";
-            this.textBox_change_pass.Size = new System.Drawing.Size(400, 26);
-            this.textBox_change_pass.TabIndex = 20;
-            this.textBox_change_pass.TextChanged += new System.EventHandler(this.textBox_change_pass_TextChanged);
-            // 
-            // save_setting
-            // 
-            this.save_setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save_setting.Location = new System.Drawing.Point(12, 207);
-            this.save_setting.Name = "save_setting";
-            this.save_setting.Size = new System.Drawing.Size(81, 54);
-            this.save_setting.TabIndex = 21;
-            this.save_setting.Text = "Lưu";
-            this.save_setting.UseVisualStyleBackColor = true;
-            this.save_setting.Click += new System.EventHandler(this.save_setting_Click);
-            // 
-            // warning_name
-            // 
-            this.warning_name.AutoSize = true;
-            this.warning_name.BackColor = System.Drawing.Color.Transparent;
-            this.warning_name.ForeColor = System.Drawing.Color.Red;
-            this.warning_name.Location = new System.Drawing.Point(871, 87);
-            this.warning_name.Name = "warning_name";
-            this.warning_name.Size = new System.Drawing.Size(60, 20);
-            this.warning_name.TabIndex = 22;
-            this.warning_name.Text = "label10";
-            // 
-            // warning_username
-            // 
-            this.warning_username.AutoSize = true;
-            this.warning_username.BackColor = System.Drawing.Color.Transparent;
-            this.warning_username.ForeColor = System.Drawing.Color.Red;
-            this.warning_username.Location = new System.Drawing.Point(871, 172);
-            this.warning_username.Name = "warning_username";
-            this.warning_username.Size = new System.Drawing.Size(60, 20);
-            this.warning_username.TabIndex = 23;
-            this.warning_username.Text = "label10";
-            // 
-            // warning_pass
-            // 
-            this.warning_pass.AutoSize = true;
-            this.warning_pass.BackColor = System.Drawing.Color.Transparent;
-            this.warning_pass.ForeColor = System.Drawing.Color.Red;
-            this.warning_pass.Location = new System.Drawing.Point(871, 252);
-            this.warning_pass.Name = "warning_pass";
-            this.warning_pass.Size = new System.Drawing.Size(60, 20);
-            this.warning_pass.TabIndex = 24;
-            this.warning_pass.Text = "label10";
             // 
             // profile_page
             // 
@@ -520,10 +521,15 @@
             this.Controls.Add(this.panel_tac_pham);
             this.Controls.Add(this.panel_profile);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "profile_page";
-            this.Text = "Signin_profile";
+            this.Text = "Thông tin tài khoản";
             this.panel_profile.ResumeLayout(false);
             this.panel_profile.PerformLayout();
+            this.panel_setting.ResumeLayout(false);
+            this.panel_setting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profile_image2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_back_home)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_current_uname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_profile_img)).EndInit();
@@ -531,10 +537,6 @@
             this.menuStrip1.PerformLayout();
             this.panel_tac_pham.ResumeLayout(false);
             this.contextMenuStrip_profile_image.ResumeLayout(false);
-            this.panel_setting.ResumeLayout(false);
-            this.panel_setting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profile_image2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
